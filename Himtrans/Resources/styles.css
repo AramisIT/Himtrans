@@ -1,0 +1,219 @@
+@media all {
+ * {margin:0;	padding: 0; font-family:Arial; text-decoration:none;}
+  body 
+{
+    margin-left: 25px;
+}
+table
+{
+    border-collapse: collapse;	
+    border-color: #600;
+    border-width: 0px;
+    border-style: solid;
+}
+td
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:5px;
+	padding-left: 5px;
+}
+td.PrintNotBordered
+{
+  border-width: 0px;
+  padding-right:0px;
+	padding-left: 0px;
+}
+td.PrintBordered
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:5px;
+	padding-left: 5px;
+}
+td.text
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:5px;
+	padding-left: 5px;
+	text-align: left; 
+}
+
+td.date
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:5px;
+	padding-left: 5px;
+	text-align: center; 
+}
+
+td.other
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:5px;
+	padding-left: 5px;
+	text-align: right; 
+}
+
+td.FirstColumn
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: left;
+	width: 300px;
+}
+tfoot
+{
+   background-color: yellow;
+} 
+
+table.TableHeader
+{
+  border-style: none;
+  width: 700px;
+}
+
+td.TableHeader
+{
+  border-style: none;
+  width:25%;
+  text-align: left; 
+}
+
+table.External
+{
+    border-collapse: collapse;	
+    border-color: #600;
+    border-width: 0px;
+    border-style: solid;
+}
+
+td.External
+{
+  border-width: 1px;	
+	border-style: inset;
+	border-color: black;
+	padding-right:0px;
+	padding-left: 0px;
+	text-align: center;
+}
+
+td.CultureHeader
+{
+  background-color: #D2FFD2;
+  text-align: left;
+}
+
+td.Culture
+{
+  background-color: #D2FFD2;
+  text-align: right;
+}
+
+tr.Cell
+{
+  background-color: #92A393;
+  font-weight: bold;
+}
+
+tr.Responsible
+{
+  background-color: #C1CAC1;
+    font-weight: bold;
+}
+
+tr.Sumary
+{
+  background-color: #C1CAC1;
+  font-weight: bold;
+}
+
+td.state
+{
+  font-weight: bold;
+  font-size: 150%;
+  width: 15%;
+}
+
+p
+{
+padding-left: 10px;
+padding-top: 10px;
+padding-bottom: 10px;	
+}
+
+thead
+{
+   background-color: #ffedff;
+   font-weight: bolder;
+   text-align: center;
+}
+
+#frozen 
+{
+display: block; 
+position: fixed; 
+background-color: #fff;
+}
+
+#scrollable
+{
+display: block; 
+}
+}
+@media print {
+ * {margin:0;	padding: 0; font-family:Arial; text-decoration:none;}
+
+td.TimesheetOffDay
+{
+   background-color: #404040;
+   text-align: center;
+}
+
+ }
+ @media screen {
+ * {margin:0;	padding: 0; font-family:Arial; text-decoration:none; }
+tr:hover
+{
+background: rgb(240,240, 240);
+}
+/*td.catalog:hover:before
+{
+content: "РћС‚РєСЂС‹С‚СЊ \"";
+}
+td.catalog:hover:after
+{
+content: "\"";
+}*/
+
+td.catalog:hover
+{
+/*cursor: pointer;*/
+color: #00f;
+}
+
+td.TimesheetOffDay
+{
+   background-color: #9BF8FF;
+   text-align: center;
+}
+  
+thead
+{
+   background-color: #ffeda4;
+   font-weight: bolder;
+   text-align: center;
+}   
+
+}
