@@ -13,7 +13,7 @@ namespace Aramis.Enums
         {
         [DataField(Description = "Вход в систему")]
         LogIn,
-        [DataField(Description = "Вход в систему")]
+        [DataField(Description = "Выход из системы")]
         LogOut,
         [DataField(Description = "Открыта партия")]
         ShipmentOpened,
@@ -40,7 +40,7 @@ namespace Aramis.Enums
 
 namespace Documents
     {
-    [Document(Description = "Журнал", GUID = "0F100906-50BA-45AD-B0FC-BFC939EEA81E", ShowNumberInForm = false, ShowResponsibleInList = true)]
+    [Document(Description = "Журнал", GUID = "0F100906-50BA-45AD-B0FC-BFC939EEA81E", ShowNumberInForm = false, ShowResponsibleInList = true, DateIsReadOnly = true)]
     public class Jornal : DocumentTable
         {
         [DataField(Description = "Событие", ReadOnly = true, ShowInList = true)]
@@ -82,6 +82,20 @@ namespace Documents
             }
         private string z_Description;
 
-        public Jornal() : base() { }
+        [DataField(Description = "Пользователь", ReadOnly = true, ShowInList = true, AllowOpenItem = true)]
+        public Users User
+            {
+            get { return ( Users ) GetValueForObjectProperty("User"); }
+            set { SetValueForObjectProperty("User", value); }
+            }
+
+        public Jornal()
+            : base()
+            {
+            if ( Aramis.Platform.SystemAramis.CurrentUser != null )
+                {
+                User = ( Users ) Aramis.Platform.SystemAramis.CurrentUser;
+                }
+            }
         }
     }

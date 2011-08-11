@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
             {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PalletItemForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.ShipingRePrintingButton = new DevExpress.XtraBars.BarButtonItem();
             this.PackingRenewalButton = new DevExpress.XtraBars.BarButtonItem();
             this.PackingEndButton = new DevExpress.XtraBars.BarButtonItem();
             this.PackingBreakButton = new DevExpress.XtraBars.BarButtonItem();
@@ -41,8 +45,8 @@
             this.barMdiChildrenListItem2 = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.TotalShipmentWeight = new DevExpress.XtraEditors.CalcEdit();
+            this.TotalPalletWeight = new DevExpress.XtraEditors.CalcEdit();
             this.CurrentWeight = new DevExpress.XtraEditors.CalcEdit();
             this.PackType = new DevExpress.XtraEditors.ButtonEdit();
             this.EnterWeightButton = new DevExpress.XtraEditors.SimpleButton();
@@ -63,17 +67,19 @@
             this.PrintLenght = new DevExpress.XtraEditors.CheckEdit();
             this.PrintLabel = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Counter = new DevExpress.XtraEditors.ComboBoxEdit();
             this.TexImage = new DevExpress.XtraEditors.PictureEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.Tex = new DevExpress.XtraEditors.ButtonEdit();
             this.BobbinsControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ChangeFontTimer = new System.Windows.Forms.Timer(this.components);
             ( ( System.ComponentModel.ISupportInitialize ) ( this.ribbon ) ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.applicationMenu1 ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.panelControl1 ) ).BeginInit();
             this.panelControl1.SuspendLayout();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit2.Properties ) ).BeginInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit1.Properties ) ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalShipmentWeight.Properties ) ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalPalletWeight.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.CurrentWeight.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PackType.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.CurrentShift.Properties ) ).BeginInit();
@@ -82,7 +88,7 @@
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Shipment.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PrintLenght.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PrintLabel.Properties ) ).BeginInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.comboBoxEdit1.Properties ) ).BeginInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.Counter.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.TexImage.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Tex.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.BobbinsControl ) ).BeginInit();
@@ -91,6 +97,7 @@
             // 
             // ribbon
             // 
+            this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu1;
             this.ribbon.ApplicationButtonText = null;
             // 
             // 
@@ -108,12 +115,28 @@
             this.barButtonItem1,
             this.barButtonItem2,
             this.barMdiChildrenListItem1,
-            this.barMdiChildrenListItem2});
+            this.barMdiChildrenListItem2,
+            this.ShipingRePrintingButton});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 17;
+            this.ribbon.MaxItemId = 18;
             this.ribbon.Name = "ribbon";
-            this.ribbon.Size = new System.Drawing.Size(901, 49);
+            this.ribbon.Size = new System.Drawing.Size(901, 53);
             this.ribbon.StatusBar = this.ribbonStatusBar;
+            // 
+            // applicationMenu1
+            // 
+            this.applicationMenu1.ItemLinks.Add(this.ShipingRePrintingButton);
+            this.applicationMenu1.Name = "applicationMenu1";
+            this.applicationMenu1.Ribbon = this.ribbon;
+            // 
+            // ShipingRePrintingButton
+            // 
+            this.ShipingRePrintingButton.Caption = "Печать спецификации";
+            this.ShipingRePrintingButton.Enabled = false;
+            this.ShipingRePrintingButton.Glyph = ( ( System.Drawing.Image ) ( resources.GetObject("ShipingRePrintingButton.Glyph") ) );
+            this.ShipingRePrintingButton.Id = 17;
+            this.ShipingRePrintingButton.Name = "ShipingRePrintingButton";
+            this.ShipingRePrintingButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShipingRePrinting_ItemClick);
             // 
             // PackingRenewalButton
             // 
@@ -148,12 +171,14 @@
             this.RePrintingButton.Id = 4;
             this.RePrintingButton.ImageIndex = 21;
             this.RePrintingButton.Name = "RePrintingButton";
+            this.RePrintingButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RePrintingButton_ItemClick);
             // 
             // ManualEnteringButton
             // 
             this.ManualEnteringButton.Caption = "Ручной ввод";
             this.ManualEnteringButton.Id = 5;
             this.ManualEnteringButton.Name = "ManualEnteringButton";
+            this.ManualEnteringButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ManualEnteringButton_ItemClick);
             // 
             // BobbinRemovingButton
             // 
@@ -161,6 +186,7 @@
             this.BobbinRemovingButton.Id = 6;
             this.BobbinRemovingButton.ImageIndex = 4;
             this.BobbinRemovingButton.Name = "BobbinRemovingButton";
+            this.BobbinRemovingButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BobbinRemovingButton_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -194,15 +220,15 @@
             this.ribbonStatusBar.ItemLinks.Add(this.RePrintingButton);
             this.ribbonStatusBar.ItemLinks.Add(this.ManualEnteringButton);
             this.ribbonStatusBar.ItemLinks.Add(this.BobbinRemovingButton);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 418);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(901, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(901, 23);
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.calcEdit2);
-            this.panelControl1.Controls.Add(this.calcEdit1);
+            this.panelControl1.Controls.Add(this.TotalShipmentWeight);
+            this.panelControl1.Controls.Add(this.TotalPalletWeight);
             this.panelControl1.Controls.Add(this.CurrentWeight);
             this.panelControl1.Controls.Add(this.PackType);
             this.panelControl1.Controls.Add(this.EnterWeightButton);
@@ -223,35 +249,37 @@
             this.panelControl1.Controls.Add(this.PrintLenght);
             this.panelControl1.Controls.Add(this.PrintLabel);
             this.panelControl1.Controls.Add(this.labelControl2);
-            this.panelControl1.Controls.Add(this.comboBoxEdit1);
+            this.panelControl1.Controls.Add(this.Counter);
             this.panelControl1.Controls.Add(this.TexImage);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.Tex);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 49);
+            this.panelControl1.Location = new System.Drawing.Point(0, 53);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(901, 112);
             this.panelControl1.TabIndex = 2;
             // 
-            // calcEdit2
+            // TotalShipmentWeight
             // 
-            this.calcEdit2.Location = new System.Drawing.Point(684, 60);
-            this.calcEdit2.MenuManager = this.ribbon;
-            this.calcEdit2.Name = "calcEdit2";
-            this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.TotalShipmentWeight.Location = new System.Drawing.Point(684, 60);
+            this.TotalShipmentWeight.MenuManager = this.ribbon;
+            this.TotalShipmentWeight.Name = "TotalShipmentWeight";
+            this.TotalShipmentWeight.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit2.Size = new System.Drawing.Size(64, 20);
-            this.calcEdit2.TabIndex = 80;
+            this.TotalShipmentWeight.Size = new System.Drawing.Size(64, 20);
+            this.TotalShipmentWeight.TabIndex = 80;
+            this.TotalShipmentWeight.TabStop = false;
             // 
-            // calcEdit1
+            // TotalPalletWeight
             // 
-            this.calcEdit1.Location = new System.Drawing.Point(684, 34);
-            this.calcEdit1.MenuManager = this.ribbon;
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.TotalPalletWeight.Location = new System.Drawing.Point(684, 34);
+            this.TotalPalletWeight.MenuManager = this.ribbon;
+            this.TotalPalletWeight.Name = "TotalPalletWeight";
+            this.TotalPalletWeight.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Size = new System.Drawing.Size(64, 20);
-            this.calcEdit1.TabIndex = 79;
+            this.TotalPalletWeight.Size = new System.Drawing.Size(64, 20);
+            this.TotalPalletWeight.TabIndex = 79;
+            this.TotalPalletWeight.TabStop = false;
             // 
             // CurrentWeight
             // 
@@ -275,6 +303,7 @@
             // 
             // EnterWeightButton
             // 
+            this.EnterWeightButton.Anchor = ( ( System.Windows.Forms.AnchorStyles ) ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right ) ) );
             this.EnterWeightButton.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 204 ) ));
             this.EnterWeightButton.Appearance.Options.UseFont = true;
             this.EnterWeightButton.Location = new System.Drawing.Point(773, 56);
@@ -287,13 +316,14 @@
             // 
             // StartButton
             // 
+            this.StartButton.Anchor = ( ( System.Windows.Forms.AnchorStyles ) ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right ) ) );
             this.StartButton.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ( ( byte ) ( 204 ) ));
             this.StartButton.Appearance.Options.UseFont = true;
             this.StartButton.Location = new System.Drawing.Point(773, 5);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(116, 45);
             this.StartButton.TabIndex = 75;
-            this.StartButton.Text = "Продолжить";
+            this.StartButton.Text = "Начать";
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // CurrentShift
@@ -304,7 +334,7 @@
             this.CurrentShift.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.CurrentShift.Size = new System.Drawing.Size(75, 20);
-            this.CurrentShift.TabIndex = 74;
+            this.CurrentShift.TabIndex = 3;
             // 
             // BobbinCount
             // 
@@ -325,7 +355,7 @@
             this.PalletNumber.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PalletNumber.Size = new System.Drawing.Size(94, 20);
-            this.PalletNumber.TabIndex = 72;
+            this.PalletNumber.TabIndex = 2;
             // 
             // Shipment
             // 
@@ -335,7 +365,7 @@
             this.Shipment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.Shipment.Size = new System.Drawing.Size(94, 20);
-            this.Shipment.TabIndex = 71;
+            this.Shipment.TabIndex = 1;
             // 
             // label10
             // 
@@ -449,18 +479,16 @@
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "Счетчик";
             // 
-            // comboBoxEdit1
+            // Counter
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(71, 33);
-            this.comboBoxEdit1.MenuManager = this.ribbon;
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.Counter.EditValue = "";
+            this.Counter.Location = new System.Drawing.Point(71, 33);
+            this.Counter.MenuManager = this.ribbon;
+            this.Counter.Name = "Counter";
+            this.Counter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "90",
-            "120"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(77, 20);
-            this.comboBoxEdit1.TabIndex = 3;
+            this.Counter.Size = new System.Drawing.Size(77, 20);
+            this.Counter.TabIndex = 3;
             // 
             // TexImage
             // 
@@ -493,14 +521,15 @@
             // BobbinsControl
             // 
             this.BobbinsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BobbinsControl.Location = new System.Drawing.Point(0, 161);
+            this.BobbinsControl.Location = new System.Drawing.Point(0, 165);
             this.BobbinsControl.MainView = this.gridView1;
             this.BobbinsControl.MenuManager = this.ribbon;
             this.BobbinsControl.Name = "BobbinsControl";
-            this.BobbinsControl.Size = new System.Drawing.Size(901, 257);
+            this.BobbinsControl.Size = new System.Drawing.Size(901, 261);
             this.BobbinsControl.TabIndex = 3;
             this.BobbinsControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.BobbinsControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BobbinsControl_KeyDown);
             // 
             // gridView1
             // 
@@ -508,6 +537,11 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
+            // 
+            // ChangeFontTimer
+            // 
+            this.ChangeFontTimer.Interval = 2500;
+            this.ChangeFontTimer.Tick += new System.EventHandler(this.ChangeFontTimer_Tick);
             // 
             // PalletItemForm
             // 
@@ -519,18 +553,21 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
-            this.MinimumSize = new System.Drawing.Size(866, 450);
+            this.MinimumSize = new System.Drawing.Size(864, 450);
             this.Name = "PalletItemForm";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "PalletItemForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PalletItemForm_FormClosing);
+            this.Load += new System.EventHandler(this.PalletItemForm_Load);
             this.Shown += new System.EventHandler(this.PalletItemForm_Shown);
             ( ( System.ComponentModel.ISupportInitialize ) ( this.ribbon ) ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.applicationMenu1 ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.panelControl1 ) ).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit2.Properties ) ).EndInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit1.Properties ) ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalShipmentWeight.Properties ) ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalPalletWeight.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.CurrentWeight.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PackType.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.CurrentShift.Properties ) ).EndInit();
@@ -539,7 +576,7 @@
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Shipment.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PrintLenght.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PrintLabel.Properties ) ).EndInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.comboBoxEdit1.Properties ) ).EndInit();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.Counter.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.TexImage.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Tex.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.BobbinsControl ) ).EndInit();
@@ -561,7 +598,7 @@
         private DevExpress.XtraEditors.CheckEdit PrintLenght;
         private DevExpress.XtraEditors.CheckEdit PrintLabel;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit Counter;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -585,11 +622,14 @@
         private DevExpress.XtraBars.BarButtonItem BobbinRemovingButton;
         private DevExpress.XtraEditors.ButtonEdit PackType;
         private DevExpress.XtraEditors.CalcEdit CurrentWeight;
-        private DevExpress.XtraEditors.CalcEdit calcEdit2;
-        private DevExpress.XtraEditors.CalcEdit calcEdit1;
+        private DevExpress.XtraEditors.CalcEdit TotalShipmentWeight;
+        private DevExpress.XtraEditors.CalcEdit TotalPalletWeight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem1;
         private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem2;
+        private System.Windows.Forms.Timer ChangeFontTimer;
+        private DevExpress.XtraBars.BarButtonItem ShipingRePrintingButton;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
         }
     }

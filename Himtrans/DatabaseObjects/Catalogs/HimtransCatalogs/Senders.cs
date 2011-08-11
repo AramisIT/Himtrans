@@ -7,7 +7,7 @@ using DatabaseObjects;
 
 namespace Catalogs
     {
-    [Catalog(Description = "Отправители", GUID = "AA3F6957-C148-455B-AE06-D7973F4CD65B", IsHierarchic = false)]
+    [Catalog(Description = "Отправители", GUID = "AA3F6957-C148-455B-AE06-D7973F4CD65B", IsHierarchic = false, ShowCodeFieldInForm = false)]
     public class Senders : CatalogTable
         {
         [DataField(Description = "Название", ShowInList = false)]
@@ -24,7 +24,7 @@ namespace Catalogs
                 NotifyPropertyChanged("Name");
                 }
             }
-        private string z_Name;
+        private string z_Name = "";
 
         [DataField(Description = "Город", ShowInList = false)]
         public string City
@@ -40,7 +40,7 @@ namespace Catalogs
                 NotifyPropertyChanged("City");
                 }
             }
-        private string z_City;
+        private string z_City = "";
 
         [DataField(Description = "Улица", ShowInList = false)]
         public string Street
@@ -56,7 +56,7 @@ namespace Catalogs
                 NotifyPropertyChanged("Street");
                 }
             }
-        private string z_Street;
+        private string z_Street = "";
 
         [DataField(Description = "Номер дома", ShowInList = false)]
         public string HouseNum
@@ -72,7 +72,7 @@ namespace Catalogs
                 NotifyPropertyChanged("HouseNum");
                 }
             }
-        private string z_HouseNum;
+        private string z_HouseNum = "";
 
         [DataField(Description = "Телефон 1", ShowInList = false)]
         public string Phone1

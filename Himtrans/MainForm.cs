@@ -21,6 +21,8 @@ using Aramis.UI.WinFormsDevXpress;
 using DevExpress.XtraBars.Ribbon;
 using System.Collections.Generic;
 using Aramis.UI.WinFormsDevXpress.Forms.Documents;
+using Documents;
+using Catalogs.Predefined;
 
 namespace Aramis.GreenHouse
     {
@@ -85,20 +87,20 @@ namespace Aramis.GreenHouse
                 {
                 UIConsts.Skin = SystemAramis.CurrentUser.Skin;
                 adminRibbonPage.Visible = SystemAramis.CurrentUser.Ref == Catalogs.CatalogUsers.Admin;
-                //foreach ( DataRow row in SystemAramis.CurrentUser.Roles.Rows )
-                //    {
-                //    if ( ( long ) row["Role"] == Catalogs.Roles.SalaryManager.Id )
-                //        {
-                //        SalaryAdministrating.Visible = true;
-                //        }
-
-                //    }
-
+                if ( SystemAramis.CurrentUser.Roles.IsContain(Predefined.SuperUser.Id, "Role") || SystemAramis.CurrentUser.Ref == Catalogs.CatalogUsers.Admin )
+                    {
+                    DBObjectsPageGroup.Visible = true;
+                    }
                 }
 
             CreateTrayIcon();
             CheckNewTaskTimer.Enabled = true;
 
+            Jornal J = new Jornal();
+            J.Date = DateTime.Now;
+            J.Event = Enums.Events.LogIn;
+            J.Description = "Вход в систему";
+            J.Write();
             }
 
         /// <summary>
@@ -127,7 +129,7 @@ namespace Aramis.GreenHouse
 
         private void constsEditBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
             {
-            ( new ConstsForm() ).Show();
+            ( new Catalogs.Forms.ConstsForm() ).Show();
             }
 
         private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
@@ -302,9 +304,10 @@ namespace Aramis.GreenHouse
 
         private void ShowHelp()
             {
+
             DatabaseObjects.CatalogsViewer viewer = new DatabaseObjects.CatalogsViewer(Ribbon.SelectedPage.Text, "InterfacePages");
             Catalogs.InterfacePages page = ( Catalogs.InterfacePages ) new Catalogs.InterfacePages().Read(viewer.Id);
-            new HelpForm().ShowPage(String.Format("{0}\\Help\\{1}", SystemAramis.APPLICATION_PATH, page.HelpFile.FileName));
+                new HelpForm().ShowPage(String.Format("{0}\\Help\\{1}", SystemAramis.APPLICATION_PATH, page.HelpFile.FileName));
             }
 
         private void barButtonItem49_ItemClick(object sender, ItemClickEventArgs e)
@@ -316,6 +319,11 @@ namespace Aramis.GreenHouse
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
             {
+            Jornal J = new Jornal();
+            J.Date = DateTime.Now;
+            J.Event = Enums.Events.LogOut;
+            J.Description = "Выход из системы";
+            J.Write();
             RemoveTrayIcon();
             }
 
@@ -338,5 +346,42 @@ namespace Aramis.GreenHouse
             {
 
             }
+
+        private void TestBarButtou_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            
+            }
+
+        private void StandartPackButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            Pallet newItem = new Pallet();
+            newItem.Complectation = ComplectationType.Standart;
+            newItem.FillFromTemplate();
+            AbstructUI.UI.ShowDatabaseObject(newItem);
+            }
+
+        private void GroupPackButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            Pallet newItem = new Pallet();
+            newItem.Complectation = ComplectationType.Group;
+            newItem.FillFromTemplate();
+            AbstructUI.UI.ShowDatabaseObject(newItem);
+            }
+
+        private void RenewingPackButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            AbstructUI.UI.ShowList(typeof(Documents.Pallet), true);
+            }
+
+        private void ConstsButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            new Catalogs.Forms.ConstsForm().ShowDialog();
+            }
+
+        private void JornalButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            AbstructUI.UI.ShowList(typeof(Documents.Jornal));
+            }
+
         }
     }

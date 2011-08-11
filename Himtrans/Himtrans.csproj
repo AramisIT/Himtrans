@@ -37,14 +37,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aramis system, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\Aramis system.dll</HintPath>
-    </Reference>
-    <Reference Include="Attributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\Attributes.dll</HintPath>
-    </Reference>
     <Reference Include="DBInteraction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\DBInteraction.dll</HintPath>
@@ -109,10 +101,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckSolutionDBStruct.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Consts\ConstsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseObjects\Catalogs\Consts\ConstsForm.Designer.cs">
+      <DependentUpon>ConstsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\PackTypes.cs" />
     <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Senders.cs" />
     <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Specifications.cs" />
     <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Tex.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Consts\Consts.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Predefined.cs" />
     <Compile Include="DatabaseObjects\Catalogs\Users\Users.cs" />
     <Compile Include="DatabaseObjects\Catalogs\Users\UsersItemForm.cs">
       <SubType>Form</SubType>
@@ -143,10 +143,31 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\OneLabelPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\OneLabelPF.designer.cs">
+      <DependentUpon>OneLabelPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PalletPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PalletPF.designer.cs">
+      <DependentUpon>PalletPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ShippingPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ShippingPF.designer.cs">
+      <DependentUpon>ShippingPF.cs</DependentUpon>
+    </Compile>
     <Compile Include="WeightGetting.cs" />
     <Content Include="TrayIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="DatabaseObjects\Catalogs\Consts\ConstsForm.resx">
+      <DependentUpon>ConstsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseObjects\Catalogs\Users\UsersItemForm.resx">
       <DependentUpon>UsersItemForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -160,6 +181,15 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OneLabelPF.resx">
+      <DependentUpon>OneLabelPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PalletPF.resx">
+      <DependentUpon>PalletPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ShippingPF.resx">
+      <DependentUpon>ShippingPF.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -360,7 +390,6 @@
     <None Include="Resources\My documents.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
     <Folder Include="Resources\images\" />
     <Folder Include="Templates\" />
   </ItemGroup>
@@ -374,6 +403,16 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Aramis UTK\Aramis\Aramis.csproj">
+      <Project>{D676BE54-EB86-42B0-BDAF-18FC83E8696A}</Project>
+      <Name>Aramis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Aramis UTK\Attributes\Attributes.csproj">
+      <Project>{3095CB66-D4D4-4E97-8D1F-451D9D60DFA5}</Project>
+      <Name>Attributes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

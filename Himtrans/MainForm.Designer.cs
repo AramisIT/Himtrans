@@ -42,7 +42,6 @@ namespace Aramis.GreenHouse
         this.DocumentsBarButton = new DevExpress.XtraBars.BarButtonItem();
         this.EnterUpdateModeButton = new DevExpress.XtraBars.BarButtonItem();
         this.TypesControlingBarButton = new DevExpress.XtraBars.BarButtonItem();
-        this.ConstsEditBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
         this.DeleteMarkedForDeletingBarButton = new DevExpress.XtraBars.BarButtonItem();
         this.ExitUpdateModeButton = new DevExpress.XtraBars.BarButtonItem();
         this.UpdateDBStructureButton = new DevExpress.XtraBars.BarButtonItem();
@@ -55,9 +54,15 @@ namespace Aramis.GreenHouse
         this.GCCollectBarButton = new DevExpress.XtraBars.BarButtonItem();
         this.UpdateDBStructureWithoutFormButton = new DevExpress.XtraBars.BarButtonItem();
         this.LoaderFilesUploading = new DevExpress.XtraBars.BarButtonItem();
+        this.StandartPackButton = new DevExpress.XtraBars.BarButtonItem();
+        this.GroupPackButton = new DevExpress.XtraBars.BarButtonItem();
+        this.RenewingPackButton = new DevExpress.XtraBars.BarButtonItem();
+        this.ConstsButton = new DevExpress.XtraBars.BarButtonItem();
+        this.JornalButton = new DevExpress.XtraBars.BarButtonItem();
         this.largeImagesCollection = new DevExpress.Utils.ImageCollection(this.components);
         this.DBObjectsPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
         this.DBObjectsPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+        this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
         this.HelpGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
         this.adminRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
         this.SQLConnentionPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -129,7 +134,6 @@ namespace Aramis.GreenHouse
             this.ExitBarButton,
             this.EnterUpdateModeButton,
             this.TypesControlingBarButton,
-            this.ConstsEditBarButtonItem,
             this.HideToTrayBarButton,
             this.DeleteMarkedForDeletingBarButton,
             this.ExitUpdateModeButton,
@@ -142,10 +146,15 @@ namespace Aramis.GreenHouse
             this.GCCollectBarButton,
             this.HelpButton,
             this.UpdateDBStructureWithoutFormButton,
-            this.LoaderFilesUploading});
+            this.LoaderFilesUploading,
+            this.StandartPackButton,
+            this.GroupPackButton,
+            this.RenewingPackButton,
+            this.ConstsButton,
+            this.JornalButton});
         this.ribbon.LargeImages = this.largeImagesCollection;
         this.ribbon.Location = new System.Drawing.Point(0, 0);
-        this.ribbon.MaxItemId = 156;
+        this.ribbon.MaxItemId = 162;
         this.ribbon.Name = "ribbon";
         this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.DBObjectsPage,
@@ -163,7 +172,7 @@ namespace Aramis.GreenHouse
             this.repositoryItemPictureEdit3,
             this.repositoryItemMemoEdit1,
             this.repositoryItemSpinEdit1});
-        this.ribbon.SelectedPage = this.adminRibbonPage;
+        this.ribbon.SelectedPage = this.DBObjectsPage;
         this.ribbon.Size = new System.Drawing.Size(1174, 149);
         this.ribbon.StatusBar = this.ribbonStatusBar;
         this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
@@ -271,13 +280,6 @@ namespace Aramis.GreenHouse
         this.TypesControlingBarButton.Name = "TypesControlingBarButton";
         this.TypesControlingBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem22_ItemClick);
         // 
-        // ConstsEditBarButtonItem
-        // 
-        this.ConstsEditBarButtonItem.Caption = "Параметры";
-        this.ConstsEditBarButtonItem.Id = 90;
-        this.ConstsEditBarButtonItem.Name = "ConstsEditBarButtonItem";
-        this.ConstsEditBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.constsEditBarButtonItem_ItemClick);
-        // 
         // DeleteMarkedForDeletingBarButton
         // 
         this.DeleteMarkedForDeletingBarButton.Caption = "Удаление помеченных";
@@ -335,6 +337,7 @@ namespace Aramis.GreenHouse
         // 
         this.PermissionsBarButton.Caption = "Права доступа";
         this.PermissionsBarButton.Id = 109;
+        this.PermissionsBarButton.LargeImageIndex = 37;
         this.PermissionsBarButton.Name = "PermissionsBarButton";
         this.PermissionsBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick_1);
         // 
@@ -343,6 +346,7 @@ namespace Aramis.GreenHouse
         this.TestBarButtou.Caption = "Test";
         this.TestBarButtou.Id = 132;
         this.TestBarButtou.Name = "TestBarButtou";
+        this.TestBarButtou.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.TestBarButtou_ItemClick);
         // 
         // TestXtraReportBarButton
         // 
@@ -371,6 +375,46 @@ namespace Aramis.GreenHouse
         this.LoaderFilesUploading.Name = "LoaderFilesUploading";
         this.LoaderFilesUploading.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem51_ItemClick_1);
         // 
+        // StandartPackButton
+        // 
+        this.StandartPackButton.Caption = "Стандартная упаковка";
+        this.StandartPackButton.Id = 156;
+        this.StandartPackButton.LargeImageIndex = 36;
+        this.StandartPackButton.Name = "StandartPackButton";
+        this.StandartPackButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.StandartPackButton_ItemClick);
+        // 
+        // GroupPackButton
+        // 
+        this.GroupPackButton.Caption = "Групповая упаковка";
+        this.GroupPackButton.Id = 157;
+        this.GroupPackButton.LargeImageIndex = 35;
+        this.GroupPackButton.Name = "GroupPackButton";
+        this.GroupPackButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.GroupPackButton_ItemClick);
+        // 
+        // RenewingPackButton
+        // 
+        this.RenewingPackButton.Caption = "Доукомплектация";
+        this.RenewingPackButton.Id = 158;
+        this.RenewingPackButton.LargeImageIndex = 34;
+        this.RenewingPackButton.Name = "RenewingPackButton";
+        this.RenewingPackButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RenewingPackButton_ItemClick);
+        // 
+        // ConstsButton
+        // 
+        this.ConstsButton.Caption = "Настройки";
+        this.ConstsButton.Id = 159;
+        this.ConstsButton.LargeImageIndex = 33;
+        this.ConstsButton.Name = "ConstsButton";
+        this.ConstsButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ConstsButton_ItemClick);
+        // 
+        // JornalButton
+        // 
+        this.JornalButton.Caption = "Журнал";
+        this.JornalButton.Id = 161;
+        this.JornalButton.LargeImageIndex = 38;
+        this.JornalButton.Name = "JornalButton";
+        this.JornalButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.JornalButton_ItemClick);
+        // 
         // largeImagesCollection
         // 
         this.largeImagesCollection.ImageSize = new System.Drawing.Size(32, 32);
@@ -391,11 +435,18 @@ namespace Aramis.GreenHouse
         this.largeImagesCollection.Images.SetKeyName(30, "Actions-view-calendar-month-icon.png");
         this.largeImagesCollection.Images.SetKeyName(31, "stock_task.png");
         this.largeImagesCollection.Images.SetKeyName(32, "1311149276_3d bar chart.png");
+        this.largeImagesCollection.Images.SetKeyName(33, "Constants.png");
+        this.largeImagesCollection.Images.SetKeyName(34, "Doukomplekt2.png");
+        this.largeImagesCollection.Images.SetKeyName(35, "GroupPackege2.png");
+        this.largeImagesCollection.Images.SetKeyName(36, "Package.png");
+        this.largeImagesCollection.Images.SetKeyName(37, "Apps-preferences-desktop-cryptography-icon.png");
+        this.largeImagesCollection.Images.SetKeyName(38, "A-Proper-Journal-Icon-icon.png");
         // 
         // DBObjectsPage
         // 
         this.DBObjectsPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.DBObjectsPageGroup,
+            this.ribbonPageGroup1,
             this.HelpGroup});
         this.DBObjectsPage.Name = "DBObjectsPage";
         this.DBObjectsPage.Text = "Объекты базы данных";
@@ -404,8 +455,22 @@ namespace Aramis.GreenHouse
         // 
         this.DBObjectsPageGroup.ItemLinks.Add(this.CatalogsBarButton);
         this.DBObjectsPageGroup.ItemLinks.Add(this.DocumentsBarButton);
+        this.DBObjectsPageGroup.ItemLinks.Add(this.ConstsButton);
+        this.DBObjectsPageGroup.ItemLinks.Add(this.PermissionsBarButton);
+        this.DBObjectsPageGroup.ItemLinks.Add(this.JornalButton);
         this.DBObjectsPageGroup.Name = "DBObjectsPageGroup";
+        this.DBObjectsPageGroup.ShowCaptionButton = false;
         this.DBObjectsPageGroup.Text = "Объекты базы данных";
+        this.DBObjectsPageGroup.Visible = false;
+        // 
+        // ribbonPageGroup1
+        // 
+        this.ribbonPageGroup1.ItemLinks.Add(this.StandartPackButton);
+        this.ribbonPageGroup1.ItemLinks.Add(this.GroupPackButton);
+        this.ribbonPageGroup1.ItemLinks.Add(this.RenewingPackButton);
+        this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+        this.ribbonPageGroup1.ShowCaptionButton = false;
+        this.ribbonPageGroup1.Text = "Режимы работы";
         // 
         // HelpGroup
         // 
@@ -423,11 +488,12 @@ namespace Aramis.GreenHouse
             this.TestPageGroup});
         this.adminRibbonPage.Name = "adminRibbonPage";
         this.adminRibbonPage.Text = "Администрирование";
+        this.adminRibbonPage.Visible = false;
         // 
         // SQLConnentionPageGroup
         // 
-        this.SQLConnentionPageGroup.ItemLinks.Add(this.ConstsEditBarButtonItem);
         this.SQLConnentionPageGroup.ItemLinks.Add(this.PermissionsBarButton);
+        this.SQLConnentionPageGroup.ItemLinks.Add(this.ConstsButton);
         this.SQLConnentionPageGroup.Name = "SQLConnentionPageGroup";
         this.SQLConnentionPageGroup.ShowCaptionButton = false;
         this.SQLConnentionPageGroup.Text = "Подключение к SQL";
@@ -684,7 +750,6 @@ namespace Aramis.GreenHouse
         private DevExpress.XtraBars.BarButtonItem TypesControlingBarButton;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup SystemPageGroup;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
-        private DevExpress.XtraBars.BarButtonItem ConstsEditBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem HideToTrayBarButton;
         private System.Windows.Forms.Timer CheckNewTaskTimer;
         private DevExpress.XtraBars.BarButtonItem DeleteMarkedForDeletingBarButton;
@@ -706,5 +771,11 @@ namespace Aramis.GreenHouse
         private DevExpress.XtraBars.BarButtonItem UpdateDBStructureWithoutFormButton;
         private DevExpress.XtraBars.BarButtonItem LoaderFilesUploading;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup HelpGroup;
+        private DevExpress.XtraBars.BarButtonItem StandartPackButton;
+        private DevExpress.XtraBars.BarButtonItem GroupPackButton;
+        private DevExpress.XtraBars.BarButtonItem RenewingPackButton;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem ConstsButton;
+        private DevExpress.XtraBars.BarButtonItem JornalButton;
     }
 }

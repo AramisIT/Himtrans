@@ -34,6 +34,8 @@
             this.CancelButton = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.TotalShipmentWeight = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.Number = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.TexImage = new DevExpress.XtraEditors.PictureEdit();
@@ -41,17 +43,16 @@
             this.Tex = new DevExpress.XtraEditors.ButtonEdit();
             this.PalletsControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.ShowPalletButton = new DevExpress.XtraBars.BarButtonItem();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.ribbon ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.panelControl1 ) ).BeginInit();
             this.panelControl1.SuspendLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalShipmentWeight.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Number.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.TexImage.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Tex.Properties ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PalletsControl ) ).BeginInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.gridView1 ) ).BeginInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit1.Properties ) ).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -66,9 +67,10 @@
             this.ribbon.ExpandCollapseItem,
             this.OKButton,
             this.WriteButton,
-            this.CancelButton});
+            this.CancelButton,
+            this.ShowPalletButton});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 5;
             this.ribbon.Name = "ribbon";
             this.ribbon.Size = new System.Drawing.Size(300, 53);
             this.ribbon.StatusBar = this.ribbonStatusBar;
@@ -104,6 +106,7 @@
             this.ribbonStatusBar.ItemLinks.Add(this.OKButton);
             this.ribbonStatusBar.ItemLinks.Add(this.WriteButton);
             this.ribbonStatusBar.ItemLinks.Add(this.CancelButton);
+            this.ribbonStatusBar.ItemLinks.Add(this.ShowPalletButton);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 426);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -111,7 +114,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.calcEdit1);
+            this.panelControl1.Controls.Add(this.TotalShipmentWeight);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.Number);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -123,6 +126,24 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(300, 89);
             this.panelControl1.TabIndex = 2;
+            // 
+            // TotalShipmentWeight
+            // 
+            this.TotalShipmentWeight.Location = new System.Drawing.Point(99, 62);
+            this.TotalShipmentWeight.MenuManager = this.ribbon;
+            this.TotalShipmentWeight.Name = "TotalShipmentWeight";
+            this.TotalShipmentWeight.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TotalShipmentWeight.Size = new System.Drawing.Size(134, 20);
+            this.TotalShipmentWeight.TabIndex = 13;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(11, 65);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(56, 13);
+            this.labelControl3.TabIndex = 12;
+            this.labelControl3.Text = "Вес партии";
             // 
             // Number
             // 
@@ -185,24 +206,14 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
-            // labelControl3
+            // ShowPalletButton
             // 
-            this.labelControl3.Location = new System.Drawing.Point(11, 65);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(56, 13);
-            this.labelControl3.TabIndex = 12;
-            this.labelControl3.Text = "Вес партии";
-            // 
-            // calcEdit1
-            // 
-            this.calcEdit1.Location = new System.Drawing.Point(99, 62);
-            this.calcEdit1.MenuManager = this.ribbon;
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Size = new System.Drawing.Size(134, 20);
-            this.calcEdit1.TabIndex = 13;
+            this.ShowPalletButton.Caption = "Открыть палету";
+            this.ShowPalletButton.Id = 4;
+            this.ShowPalletButton.Name = "ShowPalletButton";
+            this.ShowPalletButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowPalletButton_ItemClick);
             // 
             // ShipmentItemForn
             // 
@@ -221,12 +232,12 @@
             ( ( System.ComponentModel.ISupportInitialize ) ( this.panelControl1 ) ).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ( ( System.ComponentModel.ISupportInitialize ) ( this.TotalShipmentWeight.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Number.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.TexImage.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.Tex.Properties ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.PalletsControl ) ).EndInit();
             ( ( System.ComponentModel.ISupportInitialize ) ( this.gridView1 ) ).EndInit();
-            ( ( System.ComponentModel.ISupportInitialize ) ( this.calcEdit1.Properties ) ).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -246,7 +257,8 @@
         private DevExpress.XtraEditors.ButtonEdit Tex;
         private DevExpress.XtraGrid.GridControl PalletsControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.CalcEdit calcEdit1;
+        private DevExpress.XtraEditors.CalcEdit TotalShipmentWeight;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraBars.BarButtonItem ShowPalletButton;
         }
     }

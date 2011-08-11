@@ -16,8 +16,9 @@ namespace Documents
     [Document(Description = "Партия", GUID = "009CD186-D21A-4AF3-BD81-A4B7E8D1B38B", ShowDateInForm = false, NumberIsReadonly = true)]
     public class Shipment:DocumentTable
         {
+        private bool needWriteToJornal = false;
 
-        [DataField(Description = "Текс", ShowInList = true, NotEmpty = true)]
+        [DataField(Description = "Текс", ShowInList = true, NotEmpty = true, ReadOnly = true)]
         public Tex Tex
             {
             get
@@ -46,7 +47,7 @@ namespace Documents
             }
         private Image z_TexImage;
 
-        [DataField(Description = "Вес партии", StorageType = StorageTypes.Virtual, Formula = String.Format("[dbo].GetShipmentTotalWeight({0})", DOCUMENT_NUMBER_FIELD_NAME), DecimalPointsNumber = 3)]
+        [DataField(Description = "Вес партии", StorageType = StorageTypes.Virtual, Formula = "[dbo].GetShipmentTotalWeight(Number)", DecimalPointsNumber = 3)]
         public double TotalShipmentWeight
             {
             get { return z_TotalShipmentWeight; }
@@ -62,7 +63,7 @@ namespace Documents
             }
         private double z_TotalShipmentWeight;
 
-        [DataField(Description = "Номер последней бобины в парти", StorageType = StorageTypes.Virtual, Formula = String.Format("[dbo].GetLastShipmentBobinNumber({0})", DOCUMENT_NUMBER_FIELD_NAME))]
+        [DataField(Description = "Номер последней бобины в парти", StorageType = StorageTypes.Virtual, Formula = "[dbo].GetLastShipmentBobinNumber(Number)")]
         public int LastBobbinNumber
             {
             get { return z_LastBobbinNumber; }
@@ -79,7 +80,7 @@ namespace Documents
         private int z_LastBobbinNumber;
 
         [Table(Columns = "Pallet")]
-        [DataField(Description = "Палеты", StorageType = StorageTypes.Local)]
+        [DataField(Description = "Палеты", StorageType = StorageTypes.Local, ReadOnly = true)]
         public DataTable Pallets
             {
             get
@@ -88,7 +89,7 @@ namespace Documents
                 }
             }
 
-        [SubTableField(Description = "Палета", PropertyType = typeof(Pallet), AllowOpenItem = true)]
+        [SubTableField(Description = "Палета", PropertyType = typeof(Pallet), AllowOpenItem = true, ReadOnly = true)]
         public DataColumn Pallet
             {
             get;
@@ -98,29 +99,51 @@ namespace Documents
         public Shipment()
             : base()
             {
-            BeforeDBTableChecked += new CheckObjectSPDelegate(Shipment_BeforeDBTableChecked);
+            OnVirtualColumnsRecreate += new Aramis.SystemConfigurations.VirtualColumnsRecreateDelegate(Shipment_OnVirtualColumnsRecreate);
+            BeforeWriting += new BeforeWritingDelegate(Shipment_BeforeWriting);
+            AfterWriting += new AfterWritingDelegate(Shipment_AfterWriting);
             }
 
-        void Shipment_BeforeDBTableChecked()
+        void Shipment_AfterWriting(DatabaseObject item)
             {
-            List<string> funcText = new List<string>(){@"create function GetShipmentTotalWeight(@Number bigint)
+            if ( needWriteToJornal )
+                {
+                Jornal J = new Jornal();
+                J.Date = CreationDate;
+                J.Event = Events.ShipmentOpened;
+                J.Description = String.Format("Открыта партия №{0}", Number);
+                J.Write();
+                }
+            }
+
+        void Shipment_BeforeWriting(DatabaseObject item, ref bool cancel)
+            {
+            if ( IsNew )
+                {
+                needWriteToJornal = true;
+                }
+            }
+
+        List<string> Shipment_OnVirtualColumnsRecreate()
+            {
+            List<string> funcText = new List<string>(){@"create function [dbo].[GetShipmentTotalWeight] (@Number int)
 returns real
 begin
 declare @result real
- select @result = (select Round(isnull(sum(TotalPalletWeight), 0), 3) from pallet where Shipment = @Number)
+ select @result = (select Round(isnull(sum(TotalPalletWeight), 0), 3) from pallet where Shipment = @Number and MarkForDeleting = 0)
  return @result
 end"
-,@"create function GetLastShipmentBobinNumber(@Number bigint)
-returns real
+,@"create function [dbo].[GetLastShipmentBobinNumber] (@Number int)
+returns int
 begin
-declare @result real
+declare @result int
  select @result = (select Max(BobbinNumber) from SubPalletBobbins b
 join Pallet p
 on b.IdDoc = p.Id
-where p.Shipment = @Number )
+where p.Shipment = @Number and p.MarkForDeleting = 0)
  return @result
 end"};
-            Aramis.SystemConfigurations.SystemCheckers.CheckSPExistings.CreateByList(funcText);
+            return Aramis.SystemConfigurations.SystemCheckers.CheckSPExistings.RewriteByList(funcText, false);
             }
 
         protected override void InitItemBeforeShowing()

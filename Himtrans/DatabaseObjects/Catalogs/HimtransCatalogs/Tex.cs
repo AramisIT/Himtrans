@@ -9,10 +9,10 @@ using Aramis.Enums;
 
 namespace Catalogs
     {
-    [Catalog(Description = "Текс", GUID = "AE5230DB-D8FB-42D2-BD7A-2E713CB27CC4")]
+    [Catalog(Description = "Текс", GUID = "AE5230DB-D8FB-42D2-BD7A-2E713CB27CC4", IsHierarchic = false, ShowCodeFieldInForm = false)]
     public class Tex : CatalogTable
         {
-        [DataField(Description = "Картинка", NotEmpty = true)]
+        [DataField(Description = "Картинка(50x50)", NotEmpty = true)]
         public Image TexImage
             {
             get
@@ -29,8 +29,9 @@ namespace Catalogs
                 NotifyPropertyChanged("TexImage");
                 }
             }
-        private Image z_TexImage;
+        private Image z_TexImage = Consts.DefaultTexImage;
 
-        public Tex() : base() { }
+        public Tex() : base() {
+            }
         }
     }

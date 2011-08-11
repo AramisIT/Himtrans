@@ -58,5 +58,24 @@ namespace Documents.Forms
             Close();
             }
 
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+            {
+            ShowPallet();
+            }
+
+        private void ShowPallet()
+            {
+            DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            if ( row != null )
+                {
+                Aramis.UI.AbstructUI.UI.ShowItem("Pallet", ( long ) row["Pallet"]);
+                }
+            }
+
+        private void ShowPalletButton_ItemClick(object sender, ItemClickEventArgs e)
+            {
+            ShowPallet();
+            }
+
         }
     }
