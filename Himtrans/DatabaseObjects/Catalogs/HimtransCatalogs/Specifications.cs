@@ -10,7 +10,7 @@ namespace Catalogs
     [Catalog(Description = "ТУ У", GUID = "A7C15A04-A5AA-4BC8-BFC5-6EAE3ED06E41", IsHierarchic = false, ShowCodeFieldInForm = false)]
     public class Specifications : CatalogTable
         {
-        [DataField(Description = "Номер ТУ У", NotEmpty = true)]
+        [DataField(Description = "Номер ТУ У", NotEmpty = true, Size = 30)]
         public string Number
             {
             get

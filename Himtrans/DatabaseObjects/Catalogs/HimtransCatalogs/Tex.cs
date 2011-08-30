@@ -29,9 +29,26 @@ namespace Catalogs
                 NotifyPropertyChanged("TexImage");
                 }
             }
-        private Image z_TexImage = Consts.DefaultTexImage;
+        private Image z_TexImage;
 
         public Tex() : base() {
+            BeforeWriting += new BeforeWritingDelegate(Tex_BeforeWriting);
             }
+
+        void Tex_BeforeWriting(DatabaseObject item, ref bool cancel)
+        {
+            int result = 0;
+            cancel = !Int32.TryParse(((CatalogTable)item).Description, out result) || result == 0;
+            if (cancel)
+            {
+                "Наименование текса должно быть числом отличным от нуля!".AlertBox();
+            }
+        }
+
+        protected override void InitNewBeforeShowing()
+        {
+            base.InitNewBeforeShowing();
+            z_TexImage = Consts.DefaultTexImage;
+        }
         }
     }

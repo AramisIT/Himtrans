@@ -88,7 +88,7 @@ namespace Catalogs
                 NotifyPropertyChanged("Phone1");
                 }
             }
-        private string z_Phone1;
+        private string z_Phone1 = "";
 
         [DataField(Description = "Телефон 2", ShowInList = false)]
         public string Phone2
@@ -104,7 +104,7 @@ namespace Catalogs
                 NotifyPropertyChanged("Phone2");
                 }
             }
-        private string z_Phone2;
+        private string z_Phone2 = "";
 
         [DataField(Description = "Телефон 3", ShowInList = false)]
         public string Phone3
@@ -120,7 +120,7 @@ namespace Catalogs
                 NotifyPropertyChanged("Phone3");
                 }
             }
-        private string z_Phone3;
+        private string z_Phone3 = "";
 
         public Senders() : base() { }
         }

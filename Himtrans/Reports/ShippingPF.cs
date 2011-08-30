@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using Documents;
 using DevExpress.XtraReports.UI;
+using Aramis.Enums;
 
 namespace Labels
 {
@@ -33,7 +34,7 @@ namespace Labels
                     i++;
                     j = ((int)(i / 30));
                 }
-            while ( i < PL.Bobbins.Rows.Count )
+            while ( i < PL.Bobbins.Rows.Count && i <= 120)
             {
             dataSet1.Tables[0].Rows[i - j * 30][j * 3 + 1] = Convert.ToDouble(PL.Bobbins.Rows[i]["Weight"].ToString());
             dataSet1.Tables[0].Rows[i - j * 30][j * 3] = PL.Bobbins.Rows[i]["BobbinNumber"];

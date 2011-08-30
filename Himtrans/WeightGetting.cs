@@ -134,7 +134,7 @@ namespace Himtrans.WeightGetting
                             }
                         }
                     }
-                catch
+                catch (Exception exp)
                     {
                     break;
                     }

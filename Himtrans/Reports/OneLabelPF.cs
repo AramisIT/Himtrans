@@ -27,14 +27,18 @@ namespace Labels
             {
             Tex.Text = pallet.Tex.Description;
             TexImage.Image = pallet.Tex.TexImage;
-            if ( pallet.PrintLenght )
+            if (pallet.PrintLenght && pallet.PackType != null)
                 {
                 Length.Visible = true;
-                Length.Text = ( pallet.PackType.Weight / Convert.ToInt32(pallet.Tex.Description) ).ToString();
+                xrLabel10.Visible = true;
+                xrLabel2.Visible = true;
+                Length.Text = ( pallet.PackType.Weight * 1000 / Convert.ToInt32(pallet.Tex.Description) ).ToString();
                 }
             else
                 {
                 Length.Visible = false;
+                xrLabel10.Visible = false;
+                xrLabel2.Visible = false;
                 }
 
             Specification.Text = pallet.Specification.Number;
@@ -55,7 +59,7 @@ namespace Labels
             Senders sender = pallet.Sender;
             SenderDescription.Text = pallet.Sender.Name;
             SenderCity.Text = pallet.Sender.City;
-            SenderAddress.Text = pallet.Sender.Street;
+            SenderAddress.Text = String.Format("{0}, {1}", pallet.Sender.Street, pallet.Sender.HouseNum);
             SenderPhone1.Text = pallet.Sender.Phone1;
             SenderPhone2.Text = pallet.Sender.Phone2;
             SenderPhone3.Text = pallet.Sender.Phone3;

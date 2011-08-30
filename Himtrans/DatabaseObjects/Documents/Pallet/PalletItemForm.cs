@@ -57,15 +57,19 @@ namespace Documents.Forms
                     }
                 });
 
-            Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment and PalletNumber = @PalletNumber");
-            query.AddInputParameter("Shipment", Document.Shipment);
-            query.AddInputParameter("PalletNumber", Document.PalletNumber);
-            object result = query.SelectScalar();
-            if ( result != null )
+            if (!PackingRenewalButton.Down)
+            {
+                Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment and PalletNumber = @PalletNumber");
+                query.AddInputParameter("Shipment", Document.Shipment);
+                query.AddInputParameter("PalletNumber", Document.PalletNumber);
+                object result = query.SelectScalar();
+                if (result != null)
                 {
-                "Номер палеты не уникален в пределах партии!".WarningBox();
-                start = false;
+                    "Номер палеты не уникален в пределах партии!".WarningBox();
+                    start = false;
                 }
+
+            }
 
             if (!start)
                 {
@@ -113,9 +117,18 @@ namespace Documents.Forms
 
         void Document_OnWeightGetting(int number)
             {
-            LBCurrentBabin.ForeColor = Color.Red;
-            ChangeFontTimer.Enabled = true;
-            LBCurrentBabin.Text = number.ToString();
+                if (this.InvokeRequired)
+                {
+                    object[] param = new object[1];
+                    param[1] = number;
+                    this.Invoke(new OnWeightGettingDelegate(Document_OnWeightGetting), param);
+                }
+                else
+                {
+                    LBCurrentBabin.ForeColor = Color.Red;
+                    ChangeFontTimer.Enabled = true;
+                    LBCurrentBabin.Text = number.ToString();
+                }
             }
 
         private void SetReadonlyBarItems(bool readOnly)
@@ -155,6 +168,7 @@ namespace Documents.Forms
             properties.Add("BobbinCount", false);
             properties.Add("CurrentShift", false);
             properties.Add("BobbinsControl", false);
+            properties.Add("Sender", false);
             ItemFormTuner.SetReadOnlyStatus(this, false, properties);
             }
 
