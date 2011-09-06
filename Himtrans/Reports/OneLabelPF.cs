@@ -46,13 +46,15 @@ namespace Labels
                 {
                 Count.Visible = true;
                 Count.Text = pallet.BobbinCount.ToString();
+                xrLabel3.Visible = true;
                 }
             else
                 {
                 Count.Visible = false;
+                xrLabel3.Visible = false;
                 }
 
-            Net.Text = net.ToString();
+            Net.Text = pallet.PrintVirtualWeight ? net.ToString() + "±7%" : Math.Round(net, 1).ToString();
             Shipment.Text = pallet.Shipment.ToString();
             BobbinNumber.Text = bobbinNumber.ToString();
             Date.Text = DateTime.Now.ToShortDateString();

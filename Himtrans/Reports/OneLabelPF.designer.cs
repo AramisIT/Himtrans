@@ -174,6 +174,7 @@ namespace Labels
             this.xrLabel3.SizeF = new System.Drawing.SizeF(125F, 16F);
             this.xrLabel3.Text = "Кількість одиниць";
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrLabel3.Visible = false;
             this.xrLabel3.WordWrap = false;
             // 
             // SenderPhone3
@@ -338,7 +339,7 @@ namespace Labels
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(100F, 17F);
-            this.xrLabel7.Text = "Маса ± 7%";
+            this.xrLabel7.Text = "Маса";
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             this.xrLabel7.WordWrap = false;
             // 

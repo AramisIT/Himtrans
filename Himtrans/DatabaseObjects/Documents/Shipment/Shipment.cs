@@ -150,7 +150,7 @@ end"};
             {
             TexImage = Tex.TexImage;
             Pallets.Rows.Clear();
-            Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment");
+            Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment and markfordeleting = 0");
             query.AddInputParameter("Shipment", Number);
             QueryResult result = query.Select();
             while ( result.Next() )

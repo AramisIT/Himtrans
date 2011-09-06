@@ -59,7 +59,7 @@ namespace Documents.Forms
 
             if (!PackingRenewalButton.Down)
             {
-                Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment and PalletNumber = @PalletNumber");
+                Query query = DB.NewQuery("select Id from pallet where Shipment = @Shipment and PalletNumber = @PalletNumber and MarkForDeleting = 0");
                 query.AddInputParameter("Shipment", Document.Shipment);
                 query.AddInputParameter("PalletNumber", Document.PalletNumber);
                 object result = query.SelectScalar();
@@ -115,7 +115,7 @@ namespace Documents.Forms
             SetReadonlyBarItems(true);
             }
 
-        void Document_OnWeightGetting(int number)
+        void Document_OnWeightGetting(long number)
             {
                 if (this.InvokeRequired)
                 {
@@ -169,6 +169,8 @@ namespace Documents.Forms
             properties.Add("CurrentShift", false);
             properties.Add("BobbinsControl", false);
             properties.Add("Sender", false);
+            properties.Add("PrintVirtualWeight", false);
+            properties.Add("VirtualWeight", false);
             ItemFormTuner.SetReadOnlyStatus(this, false, properties);
             }
 

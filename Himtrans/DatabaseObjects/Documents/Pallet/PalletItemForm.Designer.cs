@@ -76,6 +76,8 @@
                 this.BobbinsControl = new DevExpress.XtraGrid.GridControl();
                 this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
                 this.ChangeFontTimer = new System.Windows.Forms.Timer(this.components);
+                this.PrintVirtualWeight = new DevExpress.XtraEditors.CheckEdit();
+                this.VirtualWeight = new DevExpress.XtraEditors.CalcEdit();
                 ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -96,6 +98,8 @@
                 ((System.ComponentModel.ISupportInitialize)(this.Tex.Properties)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.BobbinsControl)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+                ((System.ComponentModel.ISupportInitialize)(this.PrintVirtualWeight.Properties)).BeginInit();
+                ((System.ComponentModel.ISupportInitialize)(this.VirtualWeight.Properties)).BeginInit();
                 this.SuspendLayout();
                 // 
                 // ribbon
@@ -230,6 +234,8 @@
                 // 
                 // panelControl1
                 // 
+                this.panelControl1.Controls.Add(this.VirtualWeight);
+                this.panelControl1.Controls.Add(this.PrintVirtualWeight);
                 this.panelControl1.Controls.Add(this.label1);
                 this.panelControl1.Controls.Add(this.Sender);
                 this.panelControl1.Controls.Add(this.TotalShipmentWeight);
@@ -567,6 +573,26 @@
                 this.ChangeFontTimer.Interval = 2500;
                 this.ChangeFontTimer.Tick += new System.EventHandler(this.ChangeFontTimer_Tick);
                 // 
+                // PrintVirtualWeight
+                // 
+                this.PrintVirtualWeight.EditValue = true;
+                this.PrintVirtualWeight.Location = new System.Drawing.Point(603, 88);
+                this.PrintVirtualWeight.MenuManager = this.ribbon;
+                this.PrintVirtualWeight.Name = "PrintVirtualWeight";
+                this.PrintVirtualWeight.Properties.Caption = "Условный вес";
+                this.PrintVirtualWeight.Size = new System.Drawing.Size(96, 19);
+                this.PrintVirtualWeight.TabIndex = 83;
+                // 
+                // VirtualWeight
+                // 
+                this.VirtualWeight.Location = new System.Drawing.Point(705, 88);
+                this.VirtualWeight.MenuManager = this.ribbon;
+                this.VirtualWeight.Name = "VirtualWeight";
+                this.VirtualWeight.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+                this.VirtualWeight.Size = new System.Drawing.Size(43, 19);
+                this.VirtualWeight.TabIndex = 84;
+                // 
                 // PalletItemForm
                 // 
                 this.AcceptButton = this.EnterWeightButton;
@@ -606,6 +632,8 @@
                 ((System.ComponentModel.ISupportInitialize)(this.Tex.Properties)).EndInit();
                 ((System.ComponentModel.ISupportInitialize)(this.BobbinsControl)).EndInit();
                 ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+                ((System.ComponentModel.ISupportInitialize)(this.PrintVirtualWeight.Properties)).EndInit();
+                ((System.ComponentModel.ISupportInitialize)(this.VirtualWeight.Properties)).EndInit();
                 this.ResumeLayout(false);
 
             }
@@ -658,5 +686,7 @@
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.ButtonEdit Sender;
+        private DevExpress.XtraEditors.CalcEdit VirtualWeight;
+        private DevExpress.XtraEditors.CheckEdit PrintVirtualWeight;
         }
     }
