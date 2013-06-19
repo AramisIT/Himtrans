@@ -7,14 +7,14 @@ using Aramis.SystemConfigurations;
 using Aramis.UI;
 using Aramis.UI.WinFormsDevXpress;
 using Catalogs;
-using DatabaseObjects;
+using Aramis.Core;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 namespace Aramis.CommonForms
     {
 
-    [View(DBObjectGuid = "A705F057-D476-46D6-BA96-0D6B111D1F85", ViewType = ViewFormType.CatalogItem)]
+    [Aramis.Attributes.View(DBObjectGuid = "A705F057-D476-46D6-BA96-0D6B111D1F85", ViewType = ViewFormType.CatalogItem)]
     public partial class UsersItemForm : DevExpress.XtraBars.Ribbon.RibbonForm, IItemForm
         {
 

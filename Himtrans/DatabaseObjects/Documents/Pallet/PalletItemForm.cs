@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using Aramis.UI.WinFormsDevXpress;
 using Aramis.UI;
-using DatabaseObjects;
+using Aramis.Core;
 using Aramis.Enums;
 using DevExpress.XtraGrid.Views.Grid;
 using Aramis.Platform;
@@ -16,7 +16,7 @@ using Aramis.DatabaseConnector;
 
 namespace Documents.Forms
     {
-    [View(ViewType = ViewFormType.DocItem, DBObjectGuid = "054BADEB-D84B-4771-A40C-C651409B9A2E")]
+    [Aramis.Attributes.View(ViewType = ViewFormType.DocItem, DBObjectGuid = "054BADEB-D84B-4771-A40C-C651409B9A2E")]
     public partial class PalletItemForm : DevExpress.XtraBars.Ribbon.RibbonForm, IItemForm
         {
         #region Поля

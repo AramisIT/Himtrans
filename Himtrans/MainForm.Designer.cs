@@ -40,13 +40,10 @@ namespace Aramis.GreenHouse
             this.smallImagesCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.CatalogsBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.DocumentsBarButton = new DevExpress.XtraBars.BarButtonItem();
-            this.EnterUpdateModeButton = new DevExpress.XtraBars.BarButtonItem();
             this.TypesControlingBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.DeleteMarkedForDeletingBarButton = new DevExpress.XtraBars.BarButtonItem();
-            this.ExitUpdateModeButton = new DevExpress.XtraBars.BarButtonItem();
             this.UpdateDBStructureButton = new DevExpress.XtraBars.BarButtonItem();
             this.UploadFilesToDBButton = new DevExpress.XtraBars.BarButtonItem();
-            this.DelayControl = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.PermissionsBarButton = new DevExpress.XtraBars.BarButtonItem();
             this.TestBarButtou = new DevExpress.XtraBars.BarButtonItem();
@@ -119,9 +116,6 @@ namespace Aramis.GreenHouse
             this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu1;
             this.ribbon.ApplicationButtonText = null;
             this.ribbon.ApplicationIcon = global::Himtrans.Properties.Resources.applicationImage3;
-            // 
-            // 
-            // 
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.ExpandCollapseItem.Name = "";
             this.ribbon.Images = this.smallImagesCollection;
@@ -132,14 +126,11 @@ namespace Aramis.GreenHouse
             this.CatalogsBarButton,
             this.DocumentsBarButton,
             this.ExitBarButton,
-            this.EnterUpdateModeButton,
             this.TypesControlingBarButton,
             this.HideToTrayBarButton,
             this.DeleteMarkedForDeletingBarButton,
-            this.ExitUpdateModeButton,
             this.UpdateDBStructureButton,
             this.UploadFilesToDBButton,
-            this.DelayControl,
             this.PermissionsBarButton,
             this.TestBarButtou,
             this.TestXtraReportBarButton,
@@ -172,8 +163,7 @@ namespace Aramis.GreenHouse
             this.repositoryItemPictureEdit3,
             this.repositoryItemMemoEdit1,
             this.repositoryItemSpinEdit1});
-            this.ribbon.SelectedPage = this.DBObjectsPage;
-            this.ribbon.Size = new System.Drawing.Size(1174, 147);
+            this.ribbon.Size = new System.Drawing.Size(1174, 144);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
             // 
@@ -201,8 +191,8 @@ namespace Aramis.GreenHouse
             this.CatalogsSubItem.LargeImageIndex = 0;
             this.CatalogsSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.UsersBarButton)});
-            this.CatalogsSubItem.MenuAppearance.Menu.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CatalogsSubItem.MenuAppearance.Menu.Options.UseFont = true;
+            this.CatalogsSubItem.MenuAppearance.AppearanceMenu.Normal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CatalogsSubItem.MenuAppearance.AppearanceMenu.Normal.Options.UseFont = true;
             this.CatalogsSubItem.MenuAppearance.MenuBar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CatalogsSubItem.MenuAppearance.MenuBar.Options.UseFont = true;
             this.CatalogsSubItem.MenuAppearance.MenuCaption.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -264,19 +254,12 @@ namespace Aramis.GreenHouse
             this.DocumentsBarButton.Name = "DocumentsBarButton";
             this.DocumentsBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
-            // EnterUpdateModeButton
-            // 
-            this.EnterUpdateModeButton.Caption = "Вход в режим обновления";
-            this.EnterUpdateModeButton.Id = 81;
-            this.EnterUpdateModeButton.Name = "EnterUpdateModeButton";
-            this.EnterUpdateModeButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick_1);
-            // 
             // TypesControlingBarButton
             // 
-            this.TypesControlingBarButton.Appearance.Options.UseTextOptions = true;
-            this.TypesControlingBarButton.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.TypesControlingBarButton.Caption = "Контроль типов полей и контролов формы";
             this.TypesControlingBarButton.Id = 84;
+            this.TypesControlingBarButton.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.TypesControlingBarButton.ItemAppearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.TypesControlingBarButton.Name = "TypesControlingBarButton";
             this.TypesControlingBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem22_ItemClick);
             // 
@@ -288,13 +271,6 @@ namespace Aramis.GreenHouse
             this.DeleteMarkedForDeletingBarButton.Name = "DeleteMarkedForDeletingBarButton";
             this.DeleteMarkedForDeletingBarButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem25_ItemClick);
             // 
-            // ExitUpdateModeButton
-            // 
-            this.ExitUpdateModeButton.Caption = "Выйти из режима обновления";
-            this.ExitUpdateModeButton.Id = 103;
-            this.ExitUpdateModeButton.Name = "ExitUpdateModeButton";
-            this.ExitUpdateModeButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick_2);
-            // 
             // UpdateDBStructureButton
             // 
             this.UpdateDBStructureButton.Caption = "Обновить БД(форма)";
@@ -304,18 +280,11 @@ namespace Aramis.GreenHouse
             // 
             // UploadFilesToDBButton
             // 
-            this.UploadFilesToDBButton.Caption = "Загрузить файлы в БД";
+            this.UploadFilesToDBButton.Caption = "Обновить решение";
             this.UploadFilesToDBButton.Id = 105;
+            this.UploadFilesToDBButton.ImageIndex = 13;
             this.UploadFilesToDBButton.Name = "UploadFilesToDBButton";
             this.UploadFilesToDBButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UploadFilesToDBButton_ItemClick);
-            // 
-            // DelayControl
-            // 
-            this.DelayControl.Caption = "Задержка(сек)";
-            this.DelayControl.Edit = this.repositoryItemSpinEdit1;
-            this.DelayControl.EditValue = 180;
-            this.DelayControl.Id = 106;
-            this.DelayControl.Name = "DelayControl";
             // 
             // repositoryItemSpinEdit1
             // 
@@ -509,9 +478,6 @@ namespace Aramis.GreenHouse
             // 
             // UpdatePageGroup
             // 
-            this.UpdatePageGroup.ItemLinks.Add(this.EnterUpdateModeButton);
-            this.UpdatePageGroup.ItemLinks.Add(this.DelayControl);
-            this.UpdatePageGroup.ItemLinks.Add(this.ExitUpdateModeButton);
             this.UpdatePageGroup.ItemLinks.Add(this.UploadFilesToDBButton);
             this.UpdatePageGroup.ItemLinks.Add(this.UpdateDBStructureButton);
             this.UpdatePageGroup.ItemLinks.Add(this.UpdateDBStructureWithoutFormButton);
@@ -609,10 +575,10 @@ namespace Aramis.GreenHouse
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 605);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 597);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1174, 23);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1174, 31);
             // 
             // defaultLookAndFeel
             // 
@@ -747,7 +713,6 @@ namespace Aramis.GreenHouse
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit3;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
-        private DevExpress.XtraBars.BarButtonItem EnterUpdateModeButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraBars.BarButtonItem TypesControlingBarButton;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup SystemPageGroup;
@@ -758,10 +723,8 @@ namespace Aramis.GreenHouse
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup UpdatePageGroup;
         private DevExpress.XtraBars.BarButtonItem barButtonItem23;
-        private DevExpress.XtraBars.BarButtonItem ExitUpdateModeButton;
         private DevExpress.XtraBars.BarButtonItem UpdateDBStructureButton;
         private DevExpress.XtraBars.BarButtonItem UploadFilesToDBButton;
-        private DevExpress.XtraBars.BarEditItem DelayControl;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private DevExpress.XtraBars.BarButtonItem PermissionsBarButton;
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;

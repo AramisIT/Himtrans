@@ -8,8 +8,8 @@ namespace Aramis
         {
         [System.STAThread]
         static void Main(string[] args)
-            {            
-            SystemAramis.SystemStart(args, typeof(Aramis.GreenHouse.MainForm), typeof(Aramis.GreenHouse.CheckSolutionDBStruct));            
+            {
+            SystemAramis.SystemStart(args, typeof(Aramis.GreenHouse.MainForm));
             }
         }
     }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Aramis.Attributes;
-using DatabaseObjects;
+using Aramis.Core;
+using Aramis.Enums;
 
 namespace Catalogs
     {
-    [Catalog(Description = "Стандарты веса бобин", IsHidden = false, IsHierarchic = false, GUID = "AED6A0F6-D58B-4d3e-B721-369F5D319690", ShowCodeFieldInForm = false)]
+    [Catalog(Description = "Стандарты веса бобин", IsHidden = false, HierarchicType = HierarchicTypes.None, GUID = "AED6A0F6-D58B-4d3e-B721-369F5D319690", ShowCodeFieldInForm = false)]
     public class PackTypes : CatalogTable
         {
         [DataField(Description = "Вес бобины(г)", ShowInList = true)]

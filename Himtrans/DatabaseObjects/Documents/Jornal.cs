@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DatabaseObjects;
+using Aramis.Core;
 using Aramis.Attributes;
 using Catalogs;
 using Aramis.Enums;

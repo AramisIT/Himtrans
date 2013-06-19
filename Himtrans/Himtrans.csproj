@@ -39,15 +39,15 @@
   <ItemGroup>
     <Reference Include="Aramis system, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\Aramis system.dll</HintPath>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Aramis system.dll</HintPath>
     </Reference>
     <Reference Include="Attributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\Attributes.dll</HintPath>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Attributes.dll</HintPath>
     </Reference>
     <Reference Include="DBInteraction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\DBInteraction.dll</HintPath>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\DBInteraction.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Charts.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -71,13 +71,9 @@
     <Reference Include="DevExpress.XtraScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="ErrorsHandling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\ErrorsHandling.dll</HintPath>
-    </Reference>
     <Reference Include="Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\Extensions.dll</HintPath>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Extensions.dll</HintPath>
     </Reference>
     <Reference Include="FastReport, Version=1.6.58.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c">
       <Private>True</Private>
@@ -94,10 +90,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="ReportsPrintForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\ReportsPrintForms.dll</HintPath>
-    </Reference>
     <Reference Include="Server1C, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\Server1C.dll</HintPath>
@@ -182,6 +174,9 @@
       <DependentUpon>ShippingPF.cs</DependentUpon>
     </Compile>
     <Compile Include="WeightGetting.cs" />
+    <Content Include="TraceAramis.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TrayIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -217,8 +212,14 @@
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

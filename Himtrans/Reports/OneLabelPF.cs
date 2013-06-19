@@ -23,7 +23,7 @@ namespace Labels
             return tmp;
         }
 
-        public void Fill(Pallet pallet, double net, int bobbinNumber)
+        public void Fill(Pallet pallet, string netStr, int bobbinNumber)
             {
             Tex.Text = pallet.Tex.Description;
             TexImage.Image = pallet.Tex.TexImage;
@@ -54,7 +54,7 @@ namespace Labels
                 xrLabel3.Visible = false;
                 }
 
-            Net.Text = pallet.PrintVirtualWeight ? net.ToString() + "±7%" : Math.Round(net, 1).ToString();
+            Net.Text = netStr;
             Shipment.Text = pallet.Shipment.ToString();
             BobbinNumber.Text = bobbinNumber.ToString();
             Date.Text = DateTime.Now.ToShortDateString();

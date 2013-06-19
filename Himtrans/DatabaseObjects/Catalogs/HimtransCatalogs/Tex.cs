@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Aramis.Attributes;
-using DatabaseObjects;
+using Aramis.Core;
 using System.Drawing;
 using Aramis.Enums;
 
 namespace Catalogs
     {
-    [Catalog(Description = "Текс", GUID = "AE5230DB-D8FB-42D2-BD7A-2E713CB27CC4", IsHierarchic = false, ShowCodeFieldInForm = false)]
+    [Catalog(Description = "Текс", GUID = "AE5230DB-D8FB-42D2-BD7A-2E713CB27CC4", HierarchicType = HierarchicTypes.None, ShowCodeFieldInForm = false)]
     public class Tex : CatalogTable
         {
         [DataField(Description = "Картинка(50x50)", NotEmpty = true)]

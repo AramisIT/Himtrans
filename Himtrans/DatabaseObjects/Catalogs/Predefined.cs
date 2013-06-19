@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DatabaseObjects;
+using Aramis;
+using Aramis.Core;
 using Aramis.SystemConfigurations;
 
 namespace Catalogs.Predefined

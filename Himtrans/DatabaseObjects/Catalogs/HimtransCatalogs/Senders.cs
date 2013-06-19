@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Aramis.Attributes;
-using DatabaseObjects;
+using Aramis.Core;
+using Aramis.Enums;
 
 namespace Catalogs
     {
-    [Catalog(Description = "Отправители", GUID = "AA3F6957-C148-455B-AE06-D7973F4CD65B", IsHierarchic = false, ShowCodeFieldInForm = false)]
+    [Catalog(Description = "Отправители", GUID = "AA3F6957-C148-455B-AE06-D7973F4CD65B", HierarchicType = HierarchicTypes.None, ShowCodeFieldInForm = false)]
     public class Senders : CatalogTable
         {
         [DataField(Description = "Название", ShowInList = false)]

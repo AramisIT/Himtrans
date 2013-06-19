@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Aramis.Attributes;
-using DatabaseObjects;
+using Aramis.Core;
 using Catalogs;
 using Aramis.Enums;
 using System.Data;
@@ -105,6 +105,19 @@ namespace Documents
             set
                 {
                 SetValueForObjectProperty("Tex", value);
+                }
+            }
+
+        [DataField(Description = "Вариант печати веса", StorageType = StorageTypes.Local, NotEmpty = true)]
+        public WeightVariants WeightVariant
+            {
+            get
+                {
+                return (WeightVariants)GetValueForObjectProperty("WeightVariant");
+                }
+            set
+                {
+                SetValueForObjectProperty("WeightVariant", value);
                 }
             }
 
@@ -706,7 +719,7 @@ namespace Documents
                     if ( PrintLabel )
                         {
                         bobbinPrintForm = new OneLabelPF();
-                        bobbinPrintForm.Fill(this, PrintVirtualWeight ? VirtualWeight : CurrentWeight, currentBobinNumber);
+                        bobbinPrintForm.Fill(this, getPrintableWeight(), currentBobinNumber);
                         PrintBobbinLabel();
                         }
 
@@ -715,6 +728,24 @@ namespace Documents
                         EndPacking();
                         }
                     }
+                }
+            }
+
+        private string getPrintableWeight()
+            {
+            bool printFixedWeight = WeightVariant != null && WeightVariant.Id > 0;
+            if (printFixedWeight)
+                {
+                return WeightVariant.Description.Trim();
+                }
+
+            if (PrintVirtualWeight)
+                {
+                return VirtualWeight.ToString() + "±7%";
+                }
+            else
+                {
+                return  Math.Round(CurrentWeight, 1).ToString();
                 }
             }
 
@@ -764,7 +795,7 @@ namespace Documents
                 };
             }
 
-        public override GetRowColorDelegate GetFuncGetRowColor()
+        public override Func<DataRow, Color> GetFuncGetRowColor()
             {
             return (row) =>
                 {
