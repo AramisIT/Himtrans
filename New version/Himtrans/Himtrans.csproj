@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{931DF7C3-711D-4F5C-9D7E-3B9B3934C30A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Himtrans</RootNamespace>
+    <AssemblyName>Himtrans WMS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aramis system, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Aramis system.dll</HintPath>
+    </Reference>
+    <Reference Include="Attributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="DBInteraction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\DBInteraction.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v12.1.UI, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v12.1.Reporting.Extensions, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UTK\Aramis.NET\Aramis\bin\Release\Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=1.6.58.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=1.6.58.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=1.6.58.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PackageViaWireless, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\PackageViaWireless.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Server1C, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>X:\Aramis\A_NET\Aramis\bin\Release\Server1C.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckSolutionDBStruct.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Consts\ConstsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseObjects\Catalogs\Consts\ConstsForm.Designer.cs">
+      <DependentUpon>ConstsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\PackTypes.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Senders.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Specifications.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\Tex.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Consts\Consts.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\HimtransCatalogs\WeightVariants.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Predefined.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Users\Users.cs" />
+    <Compile Include="DatabaseObjects\Catalogs\Users\UsersItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseObjects\Catalogs\Users\UsersItemForm.Designer.cs">
+      <DependentUpon>UsersItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseObjects\Documents\Pallet\Pallet.cs" />
+    <Compile Include="DatabaseObjects\Documents\Jornal.cs" />
+    <Compile Include="DatabaseObjects\Documents\Pallet\PalletItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseObjects\Documents\Pallet\PalletItemForm.Designer.cs">
+      <DependentUpon>PalletItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseObjects\Documents\Shipment\Shipment.cs" />
+    <Compile Include="DatabaseObjects\Documents\Shipment\ShipmentItemForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseObjects\Documents\Shipment\ShipmentItemForn.Designer.cs">
+      <DependentUpon>ShipmentItemForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\OneLabelPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\OneLabelPF.designer.cs">
+      <DependentUpon>OneLabelPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PalletPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PalletPF.designer.cs">
+      <DependentUpon>PalletPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ShippingPF.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ShippingPF.designer.cs">
+      <DependentUpon>ShippingPF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeightGetting.cs" />
+    <Content Include="TraceAramis.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TrayIcon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="DatabaseObjects\Catalogs\Consts\ConstsForm.resx">
+      <DependentUpon>ConstsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseObjects\Catalogs\Users\UsersItemForm.resx">
+      <DependentUpon>UsersItemForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseObjects\Documents\Pallet\PalletItemForm.resx">
+      <DependentUpon>PalletItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseObjects\Documents\Shipment\ShipmentItemForn.resx">
+      <DependentUpon>ShipmentItemForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OneLabelPF.resx">
+      <DependentUpon>OneLabelPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PalletPF.resx">
+      <DependentUpon>PalletPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ShippingPF.resx">
+      <DependentUpon>ShippingPF.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="Pic\png\addFilter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\applicationImage.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\applicationImage2.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\applicationImage3.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\catalog.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\CopyItem.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DeletedClosedFolder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DeletedItem.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DeletedOpenedFolder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DeleteItem.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Caramel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Lilian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_McSkin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Money_Twins.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Seven_Classic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_Stardust.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\OpenItem_The_Asphalt_World.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\DifSkins\RibbonButtons_Blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\document.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\EditItem.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\ExternalData.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\fenology.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\Filter-.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\FilterSetup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\filter_add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\filter_remove.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\Folder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\HierarchyView.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\intervalSelecting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\intervalSelectingBack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\Item.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\ItemDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\ItemUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\MoveToAnotherFolder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\NewItem.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\NotHierarchyView.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\OpenedFolder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\Priva.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\refresh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\report.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\TrayIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\png\windows.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pic\TaskBack.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SkinsAppearance.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\applicationImage3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\pic\png\CopyItem.png" />
+    <Content Include="Resources\pic\png\DeletedClosedFolder.png" />
+    <Content Include="Resources\pic\png\DeletedItem.png" />
+    <Content Include="Resources\pic\png\DeletedOpenedFolder.png" />
+    <Content Include="Resources\pic\png\DeleteItem.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Black.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Blue.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Caramel.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Lilian.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_McSkin.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_MoneyTwins.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Money_Twins.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_Stardust.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_TheAsphaltWorld.png" />
+    <Content Include="Resources\pic\png\DifSkins\OpenItem_The_Asphalt_World.png" />
+    <Content Include="Resources\pic\png\EditItem.png" />
+    <Content Include="Resources\pic\png\Folder.png" />
+    <Content Include="Resources\pic\png\intervalSelecting.png" />
+    <Content Include="Resources\pic\png\intervalSelectingBack.png" />
+    <Content Include="Resources\pic\png\InvalidItem.png" />
+    <Content Include="Resources\pic\png\Item.png" />
+    <Content Include="Resources\pic\png\ItemDown.png" />
+    <Content Include="Resources\pic\png\ItemUp.png" />
+    <Content Include="Resources\pic\png\NewItem.png" />
+    <Content Include="Resources\pic\png\OpenedFolder.png" />
+    <Content Include="Resources\pic\png\ValidItem.png" />
+    <Content Include="Resources\Print.png" />
+    <Content Include="Resources\styles.css" />
+    <None Include="Resources\TaskBack.jpg" />
+    <None Include="Resources\My documents1.png" />
+    <None Include="Resources\My documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\images\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

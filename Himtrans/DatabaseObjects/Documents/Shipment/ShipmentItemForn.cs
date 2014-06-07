@@ -5,15 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Aramis.Enums;
 using DevExpress.XtraBars;
 using Aramis.UI.WinFormsDevXpress;
 using Aramis.UI;
-using Aramis.Core;
+using DatabaseObjects;
 
 namespace Documents.Forms
     {
-    [Aramis.Attributes.View(ViewType = ViewFormType.DocItem, DBObjectGuid = "009CD186-D21A-4AF3-BD81-A4B7E8D1B38B")]
+    [View(ViewType = ViewFormType.DocItem, DBObjectGuid = "009CD186-D21A-4AF3-BD81-A4B7E8D1B38B")]
     public partial class ShipmentItemForn : DevExpress.XtraBars.Ribbon.RibbonForm, IItemForm
         {
         #region Поля
@@ -21,7 +20,7 @@ namespace Documents.Forms
 
         public Shipment Document
             {
-            get { return (Shipment)Item; }
+            get { return ( Shipment ) Item; }
             }
         #endregion
 
@@ -33,7 +32,7 @@ namespace Documents.Forms
         private void OK_ItemClick(object sender, ItemClickEventArgs e)
             {
             WritingResult result = Write();
-            if (result == WritingResult.Success)
+            if ( result == WritingResult.Success )
                 {
                 Close();
                 }
@@ -67,9 +66,9 @@ namespace Documents.Forms
         private void ShowPallet()
             {
             DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            if (row != null)
+            if ( row != null )
                 {
-                Aramis.UI.UserInterface.Current.ShowItem("Pallet", (long)row["Pallet"]);
+                Aramis.UI.AbstructUI.UI.ShowItem("Pallet", ( long ) row["Pallet"]);
                 }
             }
 

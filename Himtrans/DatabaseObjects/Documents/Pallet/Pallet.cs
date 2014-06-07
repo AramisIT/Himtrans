@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Aramis.Attributes;
-using Aramis.Core;
+using DatabaseObjects;
 using Catalogs;
 using Aramis.Enums;
 using System.Data;
@@ -58,7 +58,7 @@ namespace Documents
             {
             get
                 {
-                return ( Senders ) GetValueForObjectProperty("Sender");
+                return (Senders)GetValueForObjectProperty("Sender");
                 }
             set
                 {
@@ -71,7 +71,7 @@ namespace Documents
             {
             get
                 {
-                return ( Specifications ) GetValueForObjectProperty("Specification");
+                return (Specifications)GetValueForObjectProperty("Specification");
                 }
             set
                 {
@@ -85,7 +85,7 @@ namespace Documents
             get { return z_Shipment; }
             set
                 {
-                if ( z_Shipment == value )
+                if (z_Shipment == value)
                     {
                     return;
                     }
@@ -100,7 +100,7 @@ namespace Documents
             {
             get
                 {
-                return ( Tex ) GetValueForObjectProperty("Tex");
+                return (Tex)GetValueForObjectProperty("Tex");
                 }
             set
                 {
@@ -108,7 +108,7 @@ namespace Documents
                 }
             }
 
-        [DataField(Description = "Вариант печати веса", StorageType = StorageTypes.Local, NotEmpty = true)]
+        [DataField(Description = "Вариант печати веса", StorageType = StorageTypes.Local, NotEmpty = false)]
         public WeightVariants WeightVariant
             {
             get
@@ -127,7 +127,7 @@ namespace Documents
             get { return z_PalletNumber; }
             set
                 {
-                if ( z_PalletNumber == value )
+                if (z_PalletNumber == value)
                     {
                     return;
                     }
@@ -143,7 +143,7 @@ namespace Documents
             get { return z_TotalPalletWeight; }
             set
                 {
-                if ( z_TotalPalletWeight == value )
+                if (z_TotalPalletWeight == value)
                     {
                     return;
                     }
@@ -159,7 +159,7 @@ namespace Documents
             get { return z_TotalShipmentWeight; }
             set
                 {
-                if ( z_TotalShipmentWeight == value )
+                if (z_TotalShipmentWeight == value)
                     {
                     return;
                     }
@@ -175,7 +175,7 @@ namespace Documents
             get { return z_BobbinCount; }
             set
                 {
-                if ( z_BobbinCount == value )
+                if (z_BobbinCount == value)
                     {
                     return;
                     }
@@ -191,7 +191,7 @@ namespace Documents
             get { return z_Complectation; }
             set
                 {
-                if ( z_Complectation == value )
+                if (z_Complectation == value)
                     {
                     return;
                     }
@@ -207,7 +207,7 @@ namespace Documents
             get { return z_CurrentShift; }
             set
                 {
-                if ( z_CurrentShift == value )
+                if (z_CurrentShift == value)
                     {
                     return;
                     }
@@ -223,7 +223,7 @@ namespace Documents
             get { return z_PrintLabel; }
             set
                 {
-                if ( z_PrintLabel == value )
+                if (z_PrintLabel == value)
                     {
                     return;
                     }
@@ -239,7 +239,7 @@ namespace Documents
             get { return z_PrintLenght; }
             set
                 {
-                if ( z_PrintLenght == value )
+                if (z_PrintLenght == value)
                     {
                     return;
                     }
@@ -255,7 +255,7 @@ namespace Documents
             get { return z_PrintVirtualWeight; }
             set
                 {
-                if ( z_PrintVirtualWeight == value )
+                if (z_PrintVirtualWeight == value)
                     {
                     return;
                     }
@@ -271,7 +271,7 @@ namespace Documents
             get { return z_Counter; }
             set
                 {
-                if ( z_Counter == value )
+                if (z_Counter == value)
                     {
                     return;
                     }
@@ -286,7 +286,7 @@ namespace Documents
             {
             get
                 {
-                return ( PackTypes ) GetValueForObjectProperty("PackType");
+                return (PackTypes)GetValueForObjectProperty("PackType");
                 }
             set
                 {
@@ -300,7 +300,7 @@ namespace Documents
             get { return z_TexImage; }
             set
                 {
-                if ( z_TexImage == value )
+                if (z_TexImage == value)
                     {
                     return;
                     }
@@ -316,7 +316,7 @@ namespace Documents
             get { return z_VirtualWeight; }
             set
                 {
-                if ( z_VirtualWeight == value )
+                if (z_VirtualWeight == value)
                     {
                     return;
                     }
@@ -332,7 +332,7 @@ namespace Documents
             get { return z_CurrentWeight; }
             set
                 {
-                if ( z_CurrentWeight == value )
+                if (z_CurrentWeight == value)
                     {
                     return;
                     }
@@ -428,7 +428,7 @@ namespace Documents
 
         protected override void InitNewBeforeShowing()
             {
-            while ( Consts.Sender == null || Consts.Specification == null )
+            while (Consts.Sender == null || Consts.Specification == null)
                 {
                 "Не заполнен отправитель или ТУ У.\r\nНеобходимо заполнить значения до начала работы!".WarningBox();
                 new ConstsForm().ShowDialog();
@@ -439,7 +439,7 @@ namespace Documents
 
         void Pallet_AfterWriting(DatabaseObject item)
             {
-            if ( !ShipmentDoc.Pallets.IsContain(this.Id, "Pallet") )
+            if (!ShipmentDoc.Pallets.IsContain(this.Id, "Pallet"))
                 {
                 DataRow row = ShipmentDoc.Pallets.GetNewRow(ShipmentDoc);
                 ItemFormTuner.SetRowValue(this.Id, row, ShipmentDoc.Pallet, ShipmentDoc);
@@ -450,27 +450,27 @@ namespace Documents
 
         void Pallet_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
             {
-            if ( e.PropertyName == "Shipment" )
+            if (e.PropertyName == "Shipment")
                 {
-                if ( this.Shipment < 0 )
+                if (this.Shipment < 0)
                     {
                     this.Shipment = 0;
                     }
                 ShipmentDoc = new Documents.Shipment();
                 ShipmentDoc.ReadByNumber(this.Shipment);
-                if ( !ShipmentDoc.IsNew )
+                if (!ShipmentDoc.IsNew)
                     {
                     Tex = ShipmentDoc.Tex;
                     }
                 TotalShipmentWeight = ShipmentDoc.TotalShipmentWeight;
                 }
-            else if ( e.PropertyName == "PrintLabel" || e.PropertyName == "PrintLenght" || e.PropertyName == "Counter" || e.PropertyName == "PackType" )
+            else if (e.PropertyName == "PrintLabel" || e.PropertyName == "PrintLenght" || e.PropertyName == "Counter" || e.PropertyName == "PackType")
                 {
                 IsObjectModified = false;
                 }
-            else if ( e.PropertyName == "PalletNumber" )
+            else if (e.PropertyName == "PalletNumber")
                 {
-                if ( this.PalletNumber < 0 )
+                if (this.PalletNumber < 0)
                     {
                     this.PalletNumber = 0;
                     }
@@ -479,9 +479,9 @@ namespace Documents
 
         void weightGetting_OnWeightAccepted(double value)
             {
-            if ( ( ( System.Windows.Forms.Form ) Aramis.Platform.UIConsts.MainWindow ).InvokeRequired )
+            if (((System.Windows.Forms.Form)Aramis.Platform.UIConsts.MainWindow).InvokeRequired)
                 {
-                ( ( System.Windows.Forms.Form ) Aramis.Platform.UIConsts.MainWindow ).Invoke(new WeightAcceptedDelegate(weightGetting_OnWeightAccepted), new object[1] { value });
+                ((System.Windows.Forms.Form)Aramis.Platform.UIConsts.MainWindow).Invoke(new WeightAcceptedDelegate(weightGetting_OnWeightAccepted), new object[1] { value });
                 }
             else
                 {
@@ -499,14 +499,14 @@ namespace Documents
             J.Pallet = this;
             J.Write();
 
-            nextNumbers.Add(( int ) currentRow[BobbinNumber]);
-            TotalShipmentWeight -= ( double ) currentRow[Weight];
-            TotalPalletWeight -= ( double ) currentRow[Weight];
+            nextNumbers.Add((int)currentRow[BobbinNumber]);
+            TotalShipmentWeight -= (double)currentRow[Weight];
+            TotalPalletWeight -= (double)currentRow[Weight];
             }
 
         void Pallet_ValueOfObjectPropertyChanged(string propertyName)
             {
-            if ( propertyName == "Tex" )
+            if (propertyName == "Tex")
                 {
                 this.TexImage = Tex.TexImage;
                 }
@@ -514,9 +514,9 @@ namespace Documents
 
         public bool StartNewPallet()
             {
-            if ( ShipmentDoc != null )
+            if (ShipmentDoc != null)
                 {
-                if ( ShipmentDoc.IsNew )
+                if (ShipmentDoc.IsNew)
                     {
                     ShipmentDoc.Tex = Tex;
                     ShipmentDoc.Number = Shipment;
@@ -525,7 +525,7 @@ namespace Documents
                 else
                     {
                     ShipmentDoc.Read();
-                    if ( ShipmentDoc.Tex.Id != Tex.Id )
+                    if (ShipmentDoc.Tex.Id != Tex.Id)
                         {
                         Tex = ShipmentDoc.Tex;
                         }
@@ -534,12 +534,12 @@ namespace Documents
                 TotalShipmentWeight = ShipmentDoc.TotalShipmentWeight;
                 TotalPalletWeight = 0;
 
-                ( from DataRow x in Bobbins.Rows select ( double ) x[Weight] ).ToList<double>().ForEach(w => TotalPalletWeight += w);
+                (from DataRow x in Bobbins.Rows select (double)x[Weight]).ToList<double>().ForEach(w => TotalPalletWeight += w);
                 currentBobinNumber = ShipmentDoc.LastBobbinNumber;
                 nextNumbers.Clear();
                 }
 
-            if ( Write() == WritingResult.Success )
+            if (Write() == WritingResult.Success)
                 {
                 Jornal J = new Jornal();
                 J.Date = CreationDate;
@@ -549,7 +549,7 @@ namespace Documents
                 J.Write();
 
                 weightGetting.Start();
-                currentCounter = Convert.ToInt64(new EnumsViewer(( int ) Counter, typeof(Counters)).ToString());
+                currentCounter = Convert.ToInt64(new EnumsViewer((int)Counter, typeof(Counters)).ToString());
                 return true;
                 }
             return false;
@@ -558,25 +558,25 @@ namespace Documents
         public bool EndPacking()
             {
             string desc = "бобин";
-            if ( Complectation == ComplectationType.Group )
+            if (Complectation == ComplectationType.Group)
                 {
                 desc = "мешков";
                 }
 
-            if ( String.Format("Количество {2} на поддоне: {0}\nОбщая вес: {1}\n\n{3}Завершить комплектацию и напечатать этикетку?",
+            if (String.Format("Количество {2} на поддоне: {0}\nОбщая вес: {1}\n\n{3}Завершить комплектацию и напечатать этикетку?",
                 Bobbins.Rows.Count, TotalPalletWeight, desc,
                 nextNumbers.Count != 0 ? "Имеются удаленные бобины!\r\n" : "").Ask() ||
-                ( Bobbins.Rows.Count == 120 &&
-                    String.Format("Для спецификации допустимо максимум 120 бобин!\r\nПри продолжении спецификация будет напечатана не полностью!\r\nПрервать комплектацию?").Ask() ) )
+                (Bobbins.Rows.Count == 120 &&
+                    String.Format("Для спецификации допустимо максимум 120 бобин!\r\nПри продолжении спецификация будет напечатана не полностью!\r\nПрервать комплектацию?").Ask()))
                 {
                 Jornal J;
-                if ( nextNumbers.Count != 0 )
+                if (nextNumbers.Count != 0)
                     {
                     J = new Jornal();
                     J.Date = CreationDate;
                     J.Event = Events.MissingBobbin;
                     StringBuilder bobbins = new StringBuilder();
-                    foreach ( int val in nextNumbers )
+                    foreach (int val in nextNumbers)
                         {
                         bobbins.AppendFormat(bobbins.Length == 0 ? "{0}" : ", {0}", val);
                         }
@@ -597,16 +597,16 @@ namespace Documents
 
                 weightGetting.Stop();
 
-                if ( PrintLabel )
+                if (PrintLabel)
                     {
                     palletPrintForm = new PalletPF();
                     palletPrintForm.Fill(this);
                     PrintPalletLabel();
                     }
 
-                if ( "Печатать спецификацию?".Ask() )
+                if ("Печатать спецификацию?".Ask())
                     {
-                    if ( PrintLabel )
+                    if (PrintLabel)
                         {
                         PrintShipment();
                         }
@@ -623,12 +623,12 @@ namespace Documents
             shipmentPrintForm.Fill(this);
 
             string path = String.Format("Export\\{0}", Shipment);
-            if ( !System.IO.Directory.Exists(path) )
+            if (!System.IO.Directory.Exists(path))
                 {
                 System.IO.Directory.CreateDirectory(path);
                 }
 
-            if ( isDebugMode )
+            if (isDebugMode)
                 {
                 shipmentPrintForm.ShowPreview();
                 }
@@ -642,12 +642,12 @@ namespace Documents
 
         private void PrintPalletLabel()
             {
-            if ( palletPrintForm == null )
+            if (palletPrintForm == null)
                 {
                 palletPrintForm = new PalletPF();
                 palletPrintForm.Fill(this);
                 }
-            if ( isDebugMode )
+            if (isDebugMode)
                 {
                 palletPrintForm.ShowPreview();
                 }
@@ -659,10 +659,10 @@ namespace Documents
 
         public bool BreakPacking()
             {
-            if ( Started )
+            if (Started)
                 {
-                if ( String.Format("{3}\r\nПартия: {0}\r\nПоддон: {1}\r\n{2}Прервать комплектацию?", Shipment, PalletNumber,
-                    nextNumbers.Count != 0 ? "Имеются удаленные бобины!\r\nПри возобновлении комплектации номера этих бобин будут пропущены.\r\n" : "", this.ToString()).Ask() )
+                if (String.Format("{3}\r\nПартия: {0}\r\nПоддон: {1}\r\n{2}Прервать комплектацию?", Shipment, PalletNumber,
+                    nextNumbers.Count != 0 ? "Имеются удаленные бобины!\r\nПри возобновлении комплектации номера этих бобин будут пропущены.\r\n" : "", this.ToString()).Ask())
                     {
                     Jornal J = new Jornal();
                     J.Date = CreationDate;
@@ -679,13 +679,15 @@ namespace Documents
             return true;
             }
 
+        public event Action OnPalletAdded;
+
         public void WeightGetting()
             {
-            if ( weightGetting.Started )
+            if (weightGetting.Started)
                 {
                 DataRow row = Bobbins.GetNewRow(this);
 
-                if ( nextNumbers.Count > 0 )
+                if (nextNumbers.Count > 0)
                     {
                     row[BobbinNumber] = nextNumbers.Min;
 
@@ -709,27 +711,32 @@ namespace Documents
 
                 TotalPalletWeight += CurrentWeight;
                 TotalShipmentWeight += CurrentWeight;
-                if ( Write() == WritingResult.Success )
+                if (Write() == WritingResult.Success)
                     {
-                    if ( OnWeightGetting != null )
+                    if (OnWeightGetting != null)
                         {
                         OnWeightGetting((long)row[Subtable.LINE_NUMBER_COLUMN_NAME]);
                         }
 
-                    if ( PrintLabel )
+                    if (PrintLabel)
                         {
                         bobbinPrintForm = new OneLabelPF();
                         bobbinPrintForm.Fill(this, getPrintableWeight(), currentBobinNumber);
                         PrintBobbinLabel();
                         }
 
-                    if ( ( long ) row[Subtable.LINE_NUMBER_COLUMN_NAME] == currentCounter || ( long ) row[Subtable.LINE_NUMBER_COLUMN_NAME] == 120 )
+                    if ((long)row[Subtable.LINE_NUMBER_COLUMN_NAME] == currentCounter || (long)row[Subtable.LINE_NUMBER_COLUMN_NAME] == 120)
                         {
                         EndPacking();
+                        }
+                    if (OnPalletAdded != null)
+                        {
+                        OnPalletAdded();
                         }
                     }
                 }
             }
+
 
         private string getPrintableWeight()
             {
@@ -745,13 +752,13 @@ namespace Documents
                 }
             else
                 {
-                return  Math.Round(CurrentWeight, 1).ToString();
+                return Math.Round(CurrentWeight, 1).ToString();
                 }
             }
 
         private void PrintBobbinLabel()
             {
-            if ( isDebugMode )
+            if (isDebugMode)
                 {
                 bobbinPrintForm.ShowPreview();
                 }
@@ -767,7 +774,7 @@ namespace Documents
             J.Date = DateTime.Now;
             J.Event = Events.RePrinting;
 
-            if ( Started )
+            if (Started)
                 {
                 PrintBobbinLabel();
                 J.Description = String.Format("Повторная печать этикетки бобины");
@@ -789,17 +796,17 @@ namespace Documents
                     ListFilter filter = new ListFilter("Pallet");
                     filter.Conditions["Posted"].Active = true;
                     filter.Conditions["MarkForDeleting"].Active = true;
-                    ( filter.Conditions["Posted"] as ConditionForBool ).Value.SingleValue = false;
-                    ( filter.Conditions["MarkForDeleting"] as ConditionForBool ).Value.SingleValue = false;
+                    (filter.Conditions["Posted"] as ConditionForBool).Value.SingleValue = false;
+                    (filter.Conditions["MarkForDeleting"] as ConditionForBool).Value.SingleValue = false;
                     return filter;
                 };
             }
 
-        public override Func<DataRow, Color> GetFuncGetRowColor()
+        public override GetRowColorDelegate GetFuncGetRowColor()
             {
             return (row) =>
                 {
-                    if ( ( bool ) row["Posted"] )
+                    if ((bool)row["Posted"])
                         {
                         return Consts.PostedComplectation;
                         }
